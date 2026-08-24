@@ -1,0 +1,117 @@
+/*=== TABLET (≤ 1024px) ===*/
+@media (max-width:1024px) {
+
+  /* Auth Container */
+  .split {
+    grid-template-columns: 40% 60%;
+  }
+
+  .brand-panel {
+    padding: 40px 36px;
+  }
+
+  .brand-title {
+    font-size: 32px;
+  }
+
+  .brand-desc {
+    max-width: none;
+  }
+
+  .brand-bottom {
+    gap: 20px;
+  }
+
+  .form-panel {
+    padding: 40px 28px;
+  }
+}
+
+/*=== MOBILE (≤ 768px) ===*/
+@media (max-width:768px) {
+
+  /* Auth Container: split */
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-panel {
+    display: none;
+  }
+
+  .form-panel {
+    padding: 36px 20px;
+  }
+
+  /* Auth Container: centered layout */
+  .standalone {
+    padding: 32px 16px;
+  }
+
+  /* Auth Card */
+  .card-head {
+    margin: 28px 0 22px;
+  }
+}
+
+/*=== MOBILE NHỎ (≤ 480px) ===*/
+@media (max-width:480px) {
+
+  /* Auth Card */
+  .card-head h1 {
+    font-size: 25px;
+  }
+
+  .standalone-card {
+    padding: 28px 22px;
+  }
+
+  .standalone-card h1 {
+    font-size: 22px;
+  }
+
+  /* Form Input */
+  .otp-box {
+    width: 42px;
+    height: 50px;
+    font-size: 19px;
+  }
+
+  .otp-row {
+    gap: 8px;
+  }
+
+  /* Buttons */
+  .btn {
+    height: 48px;
+  }
+
+  .input {
+    height: 48px;
+  }
+
+  .btn-social {
+    height: 46px;
+  }
+}
+
+/*=== MOBILE RẤT NHỎ (≤ 360px) ===*/
+@media (max-width:360px) {
+  .standalone-card {
+    padding: 22px 16px;
+  }
+
+  .otp-row {
+    gap: 6px;
+  }
+
+  .otp-box {
+    width: 36px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .brand-eyebrow {
+    margin-bottom: 14px;
+  }
+}
