@@ -774,3 +774,150 @@
     opacity: 1;
   }
 }
+
+/* 1. INPUT STATES */
+
+/* Default State */
+.input {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  font-size: 14.5px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.input::placeholder {
+  color: var(--muted);
+}
+
+.input:hover:not(:disabled) {
+  border-color: var(--border-strong);
+}
+
+/* Focus State */
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3.5px rgba(122, 31, 43, 0.10);
+}
+
+/* Error State (khi thẻ cha .field có class .error) */
+.field.error .input {
+  border-color: var(--error);
+}
+
+.field.error .input:focus {
+  box-shadow: 0 0 0 3.5px rgba(179, 38, 30, 0.10);
+}
+
+/* Success State (khi thẻ cha .field có class .success) */
+.field.success .input {
+  border-color: var(--success);
+}
+
+.field.success .input:focus {
+  box-shadow: 0 0 0 3.5px rgba(46, 110, 78, 0.10);
+}
+
+/* Disabled State */
+.input:disabled {
+  background: #F4F1EA;
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+/* Field Message (Error & Hint) */
+.field-msg {
+  font-size: 12.5px;
+  margin-top: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  line-height: 1.5;
+}
+
+.field-msg.error-msg {
+  color: var(--error);
+}
+
+.field-msg.hint-msg {
+  color: var(--text-secondary);
+}
+
+.field-msg svg {
+  flex-shrink: 0;
+  margin-top: 1.5px;
+}
+
+
+/* 2. BUTTON STATES */
+
+/* Base Button */
+.btn {
+  width: 100%;
+  height: 50px;
+  border-radius: var(--radius);
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color .15s ease, transform .05s ease, box-shadow .15s ease;
+}
+
+/* Primary Button - Default */
+.btn-primary {
+  background: var(--primary);
+  color: #FBF4E6;
+}
+
+/* Hover State */
+.btn-primary:hover:not(:disabled):not(.is-loading) {
+  background: var(--primary-hover);
+}
+
+/* Active / Press State */
+.btn-primary:active:not(:disabled):not(.is-loading) {
+  background: var(--primary-press);
+  transform: scale(0.99);
+}
+
+/* Disabled State */
+.btn-primary:disabled {
+  background: #D9B9BC;
+  color: #FBF4E6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading State */
+.btn.is-loading {
+  pointer-events: none;
+  cursor: wait;
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(251, 244, 230, 0.35);
+  border-top-color: #FBF4E6;
+  animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

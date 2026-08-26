@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xác minh OTP — E-SPIRIT</title>
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+</head>
+<body>
+  <div class="standalone">
+    <div class="standalone-inner">
+      <div class="standalone-logo">
+        <a href="../../index.html" class="logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="19" stroke="#7A1F2B" stroke-width="1.4"/>
+            <circle cx="20" cy="20" r="13" stroke="#C8A45D" stroke-width="1" opacity="0.7"/>
+            <path d="M14 13H26M14 20H23M14 27H26" stroke="#7A1F2B" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-word on-light">E-SPIRIT</span>
+        </a>
+      </div>
+      <div class="standalone-card text-center">
+        <div class="center-icon tone-primary">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#7A1F2B" stroke-width="1.8"/><path d="M9 17h6" stroke="#7A1F2B" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h1>Xác minh email</h1>
+        <p class="desc">Mã xác minh đã được gửi đến email đăng ký của bạn.</p>
+
+        <div id="otp-alert-slot"></div>
+
+        <div class="otp-row" id="otpRow">
+          <input class="otp-box" maxlength="1" inputmode="numeric" aria-label="Số 1">
+          <input class="otp-box" maxlength="1" inputmode="numeric" aria-label="Số 2">
+          <input class="otp-box" maxlength="1" inputmode="numeric" aria-label="Số 3">
+          <input class="otp-box" maxlength="1" inputmode="numeric" aria-label="Số 4">
+          <input class="otp-box" maxlength="1" inputmode="numeric" aria-label="Số 5">
+          <input class="otp-box" maxlength="1" inputmode="numeric" aria-label="Số 6">
+        </div>
+
+        <div class="resend-row">
+          <span id="resendText">Gửi lại mã sau <b id="resendTimer">00:30</b></span>
+          <button type="button" id="resendBtn" style="display:none;">Gửi lại mã</button>
+        </div>
+
+        <button class="btn btn-primary" type="button" id="otpSubmit"><span>Xác minh</span></button>
+        <p class="field-msg hint-msg" style="justify-content:center; margin-top:14px;">Nhập <b>000000</b> để xem trạng thái lỗi, hoặc mã khác để thành công.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/auth/verify-otp.js"></script>
+</body>
+</html>
