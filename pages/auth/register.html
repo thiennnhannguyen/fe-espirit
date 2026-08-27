@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký — E-SPIRIT</title>
+  <meta name="description"
+    content="Tạo tài khoản E-SPIRIT để khám phá kiến thức, nghi thức và dịch vụ cúng kiếng phù hợp cho gia đình bạn.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+  <div class="split">
+    <!-- Brand panel -->
+    <div class="brand-panel">
+      <svg class="heritage-pattern" viewBox="0 0 500 900" preserveAspectRatio="xMidYMid slice">
+        <g stroke="#C8A45D" stroke-width="1" fill="none">
+          <circle cx="90" cy="120" r="70" />
+          <circle cx="90" cy="120" r="50" />
+          <circle cx="90" cy="120" r="30" />
+          <circle cx="430" cy="740" r="90" />
+          <circle cx="430" cy="740" r="66" />
+          <circle cx="430" cy="740" r="40" />
+        </g>
+        <path d="M0 420 Q 120 400 250 430 T 500 420" stroke="#C8A45D" stroke-width="1" fill="none" opacity="0.6" />
+        <path d="M0 460 Q 120 440 250 470 T 500 460" stroke="#C8A45D" stroke-width="1" fill="none" opacity="0.4" />
+      </svg>
+      <div class="brand-top">
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="19" stroke="#C8A45D" stroke-width="1.4" />
+          <circle cx="20" cy="20" r="13" stroke="#C8A45D" stroke-width="1" opacity="0.55" />
+          <path d="M14 13H26M14 20H23M14 27H26" stroke="#FBF4E6" stroke-width="2.4" stroke-linecap="round" />
+        </svg>
+        <span class="logo-word on-dark">E-SPIRIT</span>
+      </div>
+      <div class="brand-mid">
+        <div class="brand-eyebrow">Bắt đầu hành trình khám phá</div>
+        <h1 class="brand-title">Gìn giữ truyền thống<br>Kết nối hôm nay</h1>
+        <p class="brand-desc">Tạo tài khoản để khám phá nghi lễ, phong tục, lễ hội và những giá trị văn hóa Việt Nam phù
+          hợp với từng dịp trong đời sống.</p>
+      </div>
+      <div class="brand-bottom">
+        <div class="brand-stat"><b>120+</b>Nghi lễ &amp; phong tục</div>
+        <div class="brand-stat"><b>40+</b>Lễ hội &amp; văn hóa</div>
+        <div class="brand-stat"><b>63</b>Tỉnh thành Việt Nam</div>
+      </div>
+    </div>
+
+    <!-- Form panel -->
+    <div class="form-panel">
+      <div class="auth-card">
+        <a href="../../index.html" class="logo" id="logo-link">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="19" stroke="#7A1F2B" stroke-width="1.4" />
+            <circle cx="20" cy="20" r="13" stroke="#C8A45D" stroke-width="1" opacity="0.7" />
+            <path d="M14 13H26M14 20H23M14 27H26" stroke="#7A1F2B" stroke-width="2.4" stroke-linecap="round" />
+          </svg>
+          <span class="logo-word on-light">E-SPIRIT</span>
+        </a>
+
+        <div class="card-head">
+          <h1>Tạo tài khoản E-SPIRIT</h1>
+          <p>Bắt đầu hành trình khám phá và gìn giữ những giá trị văn hóa Việt.</p>
+        </div>
+
+        <!-- Alert slot -->
+        <div id="register-alert-slot"></div>
+
+        <form id="registerForm" novalidate>
+          <!-- Full Name -->
+          <div class="field" id="reg-name-field">
+            <label for="reg-name">Họ và tên</label>
+            <input class="input" type="text" id="reg-name" placeholder="Nhập họ tên của bạn" autocomplete="name">
+            <div class="field-msg error-msg" id="reg-name-error" style="display:none;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                <path d="M12 8v5M12 16h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>Vui lòng nhập họ và tên.</span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="field" id="reg-email-field">
+            <label for="reg-email">Email</label>
+            <input class="input" type="email" id="reg-email" placeholder="Nhập email của bạn" autocomplete="email">
+            <div class="field-msg error-msg" id="reg-email-error" style="display:none;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                <path d="M12 8v5M12 16h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span id="reg-email-error-text">Vui lòng nhập email hợp lệ.</span>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="field" id="reg-pw-field">
+            <label for="reg-pw">Mật khẩu</label>
+            <div class="input-wrap">
+              <input class="input has-icon-right" type="password" id="reg-pw" placeholder="Nhập mật khẩu của bạn"
+                autocomplete="new-password">
+              <button type="button" class="icon-btn" id="toggle-pw" aria-label="Hiện mật khẩu">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="currentColor" stroke-width="1.8" />
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8" />
+                </svg>
+              </button>
+            </div>
+            <div class="field-msg error-msg" id="reg-pw-error" style="display:none;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                <path d="M12 8v5M12 16h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>Mật khẩu phải có ít nhất 8 ký tự.</span>
+            </div>
+            <!-- Password strength -->
+            <div class="pw-strength" id="pw-strength" style="display:none;">
+              <div class="pw-bars">
+                <div class="pw-bar" id="bar1"></div>
+                <div class="pw-bar" id="bar2"></div>
+                <div class="pw-bar" id="bar3"></div>
+              </div>
+              <div class="pw-label" id="pw-label"></div>
+              <div class="pw-reqs">
+                <div class="pw-req" id="req-len"><span class="dot"></span>Ít nhất 8 ký tự</div>
+                <div class="pw-req" id="req-upper"><span class="dot"></span>Có chữ hoa</div>
+                <div class="pw-req" id="req-lower"><span class="dot"></span>Có chữ thường</div>
+                <div class="pw-req" id="req-num"><span class="dot"></span>Có số</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="field" id="reg-confirm-field">
+            <label for="reg-confirm">Xác nhận mật khẩu</label>
+            <div class="input-wrap">
+              <input class="input has-icon-right" type="password" id="reg-confirm" placeholder="Nhập lại mật khẩu"
+                autocomplete="new-password">
+              <button type="button" class="icon-btn" id="toggle-confirm" aria-label="Hiện mật khẩu">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="currentColor" stroke-width="1.8" />
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8" />
+                </svg>
+              </button>
+            </div>
+            <div class="field-msg error-msg" id="reg-confirm-error" style="display:none;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                <path d="M12 8v5M12 16h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>Mật khẩu xác nhận không khớp.</span>
+            </div>
+          </div>
+
+          <!-- Terms checkbox -->
+          <div style="margin-bottom: 20px;">
+            <label class="checkbox-row" id="terms-row">
+              <input type="checkbox" id="reg-terms">
+              <span>Tôi đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a> của
+                E-SPIRIT.</span>
+            </label>
+            <div class="field-msg error-msg" id="reg-terms-error" style="display:none;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                <path d="M12 8v5M12 16h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>Bạn cần đồng ý với điều khoản để tiếp tục.</span>
+            </div>
+          </div>
+
+          <!-- Register button -->
+          <button class="btn btn-primary" type="submit" id="registerSubmit"
+            style="text-transform: uppercase; letter-spacing: 0.05em;">
+            <span>Tạo tài khoản</span>
+          </button>
+        </form>
+
+        <div class="divider"><span>Hoặc đăng ký với</span></div>
+
+        <!-- Google button -->
+        <button class="btn-social" type="button" id="google-register-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18">
+            <path fill="#4285F4"
+              d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62Z" />
+            <path fill="#34A853"
+              d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.81.54-1.85.86-3.04.86-2.34 0-4.32-1.58-5.03-3.71H.96v2.33A9 9 0 0 0 9 18Z" />
+            <path fill="#FBBC05" d="M3.97 10.71a5.4 5.4 0 0 1 0-3.42V4.96H.96a9 9 0 0 0 0 8.08l3.01-2.33Z" />
+            <path fill="#EA4335"
+              d="M9 3.58c1.32 0 2.51.46 3.44 1.35l2.59-2.59A8.6 8.6 0 0 0 9 0 9 9 0 0 0 .96 4.96l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58Z" />
+          </svg>
+          <span>Google</span>
+        </button>
+
+        <p class="bottom-note">Đã có tài khoản? <a href="login.html" id="login-link">Đăng nhập</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/auth/register.js"></script>
+</body>
+
+</html>
