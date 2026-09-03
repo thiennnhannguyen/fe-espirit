@@ -88,6 +88,7 @@ function setLoading(btn, loading) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const { validators, MESSAGES } = window.AuthValidator || {};
   const form = document.getElementById('loginForm');
   const emailInput = document.getElementById('login-email');
   const pwInput = document.getElementById('login-pw');
@@ -146,13 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let isValid = true;
 
-      if (!isValidEmail(email)) {
-        showFieldError('login-email-field', 'login-email-error', 'Vui lòng nhập email hợp lệ.');
+      if (!validators.required(email)) {
+        showFieldError('login-email-field', 'login-email-error', MESSAGES.REQUIRED('Email'));
+        isValid = false;
+      } else if (!validators.email(email)) {
+        showFieldError('login-email-field', 'login-email-error', MESSAGES.EMAIL_INVALID);
         isValid = false;
       }
 
-      if (!password) {
-        showFieldError('login-pw-field', 'login-pw-error', 'Vui lòng nhập mật khẩu.');
+      if (!validators.required(password)) {
+        showFieldError('login-pw-field', 'login-pw-error', MESSAGES.REQUIRED('Mật khẩu'));
         isValid = false;
       }
 

@@ -774,3 +774,37 @@
     opacity: 1;
   }
 }
+
+/* Trạng thái Input: Default, Hover, Focus, Error, Success, Disabled */
+.field.error .input {
+  border-color: var(--error);
+}
+
+.field.error .input:focus {
+  box-shadow: 0 0 0 3.5px rgba(179, 38, 30, 0.10);
+}
+
+.field.success .input {
+  border-color: var(--success);
+}
+
+.field.success .input:focus {
+  box-shadow: 0 0 0 3.5px rgba(46, 110, 78, 0.10);
+}
+
+.input:disabled {
+  background: #F4F1EA;
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+/* Trạng thái Button: Loading, Disabled */
+.btn.is-loading {
+  pointer-events: none;
+}
+
+.btn-primary:disabled {
+  background: #D9B9BC;
+  color: #FBF4E6;
+  cursor: not-allowed;
+}
