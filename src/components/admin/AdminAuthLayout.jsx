@@ -1,4 +1,4 @@
-import logoIcon from '../../assets/icons/logo.svg'
+import logoDongson from '../../assets/logo-dongson.jpg'
 
 /**
  * Layout 2 cột dùng chung cho toàn bộ màn hình Admin Authentication
@@ -65,7 +65,9 @@ export default function AdminAuthLayout({ children }) {
         </svg>
 
         <div className="relative z-10 flex items-center gap-3 px-12 pt-12">
-          <img src={logoIcon} alt="E-Spirit" className="h-10 w-10 brightness-0 invert opacity-90" />
+          <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full">
+            <img src={logoDongson} alt="E-Spirit" className="h-full w-full object-cover mix-blend-screen scale-[1.18]" />
+          </div>
           <span className="font-serif text-xl font-semibold tracking-[0.25em] text-[#CAA46A]">
             E-SPIRIT
           </span>
