@@ -13,8 +13,8 @@ export default function ChatInput() {
   const recognitionRef = useRef(null);
   
   // Lấy actions từ Zustand store
-  const addMessage = useChatStore((state) => state.addMessage);
-  const simulateBotResponse = useChatStore((state) => state.simulateBotResponse);
+  const sendChatMessage = useChatStore((state) => state.sendChatMessage);
+  const isSending = useChatStore((state) => state.isSending);
 
   // Khởi tạo Speech Recognition
   useEffect(() => {
@@ -59,26 +59,21 @@ export default function ChatInput() {
   }, [inputText]);
 
   const handleKeyDown = (e) => {
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return; // Bỏ qua sự kiện khi đang gõ tiếng Việt (IME)
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      if (inputText.trim() || selectedImage) {
+      if (!isSending && (inputText.trim() || selectedImage)) {
         handleSend();
       }
     }
   };
 
   const handleSend = () => {
-    if (inputText.trim() || selectedImage) {
-      // Gọi action thêm tin nhắn
-      addMessage({
-        sender: 'user',
-        type: 'text',
-        content: inputText.trim() || 'Đã gửi một hình ảnh',
-        // Nếu làm thật sẽ đính kèm selectedImage vào payload ở đây
-      });
-      
-      // Kích hoạt bot trả lời tự động
-      simulateBotResponse();
+    if (isSending) return; // Khóa gửi nếu hệ thống đang xử lý
+    const contentToSend = inputText.trim() || 'Đã gửi một hình ảnh';
+    if (contentToSend || selectedImage) {
+      // Dùng action gửi tin nhắn thật qua API
+      sendChatMessage(contentToSend);
     }
     
     setInputText('');
@@ -191,11 +186,11 @@ export default function ChatInput() {
             {(hasContent || isRecording) && (
               <button
                 onClick={handleSend}
-                disabled={!hasContent}
+                disabled={!hasContent || isSending}
                 className={`flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 focus:outline-none ${
-                  hasContent
+                  hasContent && !isSending
                     ? 'bg-[#7A1E24] text-white shadow-md hover:bg-[#63181d]'
-                    : 'bg-stone-100 text-stone-400'
+                    : 'bg-stone-100 text-stone-400 cursor-not-allowed'
                 }`}
                 title="Gửi tin nhắn"
               >

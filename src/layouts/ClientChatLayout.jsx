@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import ChatSidebar from '../pages/client/ChatHome/components/ChatSidebar';
 import ChatHeader from '../pages/client/ChatHome/components/ChatHeader';
 import FeedbackModal from '../components/client/FeedbackModal';
 import ProfileModal from '../components/client/ProfileModal';
+import { useCalendarStore } from '../store/useCalendarStore';
 
 export default function ClientChatLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [resetTrigger, setResetTrigger] = useState(0);
+
+  const fetchToday = useCalendarStore((state) => state.fetchToday);
+
+  useEffect(() => {
+    fetchToday();
+  }, [fetchToday]);
 
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 

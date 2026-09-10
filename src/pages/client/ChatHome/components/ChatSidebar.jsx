@@ -1,15 +1,29 @@
-import { useState } from 'react';
-import { MessageSquare, Plus, Pin, PanelLeftClose, X, Edit2, Loader2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { MessageSquare, Plus, Pin, PanelLeftClose, X, Edit2, Loader2, Trash2 } from 'lucide-react';
 import { useChatStore } from '../../../../store/useChatStore';
 import { useAuthStore } from '../../../../store/useAuthStore';
 
 export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
-  const { createNewChat, chatSessions, currentSessionId, loadSession, togglePinSession, renameSession } = useChatStore();
+  const { 
+    createNewChat, 
+    chatSessions, 
+    currentSessionId, 
+    selectSession, // Dùng hàm mới lấy data API thay vì loadSession nội bộ
+    togglePinSession, 
+    renameSession, 
+    fetchSessionsAction, 
+    isLoadingSessions,
+    removeSession
+  } = useChatStore();
   const { user } = useAuthStore();
 
   const [editingId, setEditingId] = useState(null);
   const [editTitle, setEditTitle] = useState('');
   const [isCreating, setIsCreating] = useState(false);
+
+  useEffect(() => {
+    fetchSessionsAction();
+  }, [fetchSessionsAction]);
 
   const pinnedSessions = chatSessions.filter((session) => session.isPinned);
   const recentSessions = chatSessions.filter((session) => !session.isPinned);
@@ -20,7 +34,7 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
       await createNewChat();
       if (onNewChat) onNewChat();
     } catch (error) {
-      // Lỗi đã được store catch và bắn toast, ở đây chỉ cần bắt để kết thúc loading
+      // Lỗi đã được store catch và bắn toast
     } finally {
       setIsCreating(false);
     }
@@ -47,7 +61,13 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
     }
   };
 
-  // Khởi tạo chữ cái đầu của username nếu đã đăng nhập, fallback là 'U'
+  const handleDelete = async (e, id) => {
+    e.stopPropagation(); // Chặn nổi bọt sự kiện
+    if (window.confirm("Bạn có chắc chắn muốn xóa cuộc trò chuyện này? Dữ liệu không thể khôi phục.")) {
+      await removeSession(id);
+    }
+  };
+
   const initial = user?.username ? user.username.charAt(0).toUpperCase() : 'U';
 
   const renderSessionItem = (chat, iconMode) => {
@@ -62,7 +82,7 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
             : 'text-red-100/90 font-medium hover:bg-white/10 hover:text-white'
         }`}
         onClick={() => {
-          if (!isEditing) loadSession(chat.id);
+          if (!isEditing) selectSession(chat.id);
         }}
       >
         {iconMode === 'pin' ? (
@@ -116,6 +136,14 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
                 <Pin size={14} />
               </button>
             )}
+            {/* Nút Xóa */}
+            <button
+              onClick={(e) => handleDelete(e, chat.id)}
+              className="focus:outline-none flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors"
+              title="Xóa hội thoại"
+            >
+              <Trash2 size={14} />
+            </button>
           </div>
         )}
       </div>
@@ -128,11 +156,9 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
         isOpen ? 'w-[260px] translate-x-0' : 'w-0 -translate-x-full lg:translate-x-0'
       }`}
     >
-      {/* Vùng div bọc nội dung cố định width 260px để không bị squash content khi w-0 */}
       <div className="flex flex-col h-full w-[260px] shrink-0">
-        {/* Top Section: Logo & Action Button */}
+        {/* Top Section */}
         <div className="flex flex-col gap-4 p-4 border-b border-white/10">
-          {/* Header với Logo & Nút Thu Gọn Menu */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-amber-300 shadow-inner backdrop-blur-xs">
@@ -148,7 +174,6 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
               </div>
             </div>
 
-            {/* Nút thu gọn / đóng menu */}
             <button
               onClick={onClose}
               className="flex h-8 w-8 items-center justify-center rounded-lg text-red-200/80 transition-colors hover:bg-white/10 hover:text-white"
@@ -159,7 +184,6 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
             </button>
           </div>
 
-          {/* Nút "Tạo mới đoạn chat" (Primary button, width full, icon Plus) */}
           <button
             onClick={handleCreateNewChat}
             disabled={isCreating}
@@ -176,36 +200,53 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
 
         {/* Middle Section: Chat Session Management */}
         <div className="flex-1 overflow-y-auto px-3 py-4 custom-scrollbar">
-          {/* Mục Các Cuộc Hội Thoại Đã Ghim */}
-          {pinnedSessions.length > 0 && (
-            <div className="mb-4">
-              <div className="mb-2 flex items-center gap-1.5 px-2 text-[11px] font-semibold text-red-200/70 uppercase tracking-wider">
-                <Pin size={12} className="rotate-45" />
-                <span>Đã ghim</span>
-              </div>
-
-              <div className="space-y-1">
-                {pinnedSessions.map((chat) => renderSessionItem(chat, 'pin'))}
+          {isLoadingSessions ? (
+            <div className="flex flex-col gap-3 px-2 mt-2">
+              <div className="animate-pulse h-10 w-full rounded-xl bg-white/10"></div>
+              <div className="animate-pulse h-10 w-full rounded-xl bg-white/10"></div>
+              <div className="animate-pulse h-10 w-full rounded-xl bg-white/10"></div>
+              <div className="text-center text-red-200/60 text-[11px] mt-2">
+                Đang tải lịch sử trò chuyện...
               </div>
             </div>
-          )}
-
-          {/* Viền phân cách section mờ nếu có cả 2 mảng */}
-          {pinnedSessions.length > 0 && recentSessions.length > 0 && (
-            <div className="my-3 border-t border-white/10" />
-          )}
-
-          {/* Mục Các Cuộc Hội Thoại Gần Đây */}
-          {recentSessions.length > 0 && (
-            <div>
-              <div className="mb-2 px-2 text-[11px] font-semibold text-red-200/70 uppercase tracking-wider">
-                Gần đây
-              </div>
-
-              <div className="space-y-1">
-                {recentSessions.map((chat) => renderSessionItem(chat, 'recent'))}
-              </div>
+          ) : chatSessions.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full opacity-60 px-4 text-center mt-10">
+              <MessageSquare size={32} className="text-red-200/50 mb-3" />
+              <p className="text-sm text-red-200/80 font-medium">Chưa có cuộc trò chuyện nào</p>
+              <p className="text-xs text-red-200/60 mt-1">Hãy tạo đoạn chat mới để bắt đầu khám phá hệ thống.</p>
             </div>
+          ) : (
+            <>
+              {/* Mục Các Cuộc Hội Thoại Đã Ghim */}
+              {pinnedSessions.length > 0 && (
+                <div className="mb-4">
+                  <div className="mb-2 flex items-center gap-1.5 px-2 text-[11px] font-semibold text-red-200/70 uppercase tracking-wider">
+                    <Pin size={12} className="rotate-45" />
+                    <span>Đã ghim</span>
+                  </div>
+                  <div className="space-y-1">
+                    {pinnedSessions.map((chat) => renderSessionItem(chat, 'pin'))}
+                  </div>
+                </div>
+              )}
+
+              {/* Viền phân cách section mờ nếu có cả 2 mảng */}
+              {pinnedSessions.length > 0 && recentSessions.length > 0 && (
+                <div className="my-3 border-t border-white/10" />
+              )}
+
+              {/* Mục Các Cuộc Hội Thoại Gần Đây */}
+              {recentSessions.length > 0 && (
+                <div>
+                  <div className="mb-2 px-2 text-[11px] font-semibold text-red-200/70 uppercase tracking-wider">
+                    Gần đây
+                  </div>
+                  <div className="space-y-1">
+                    {recentSessions.map((chat) => renderSessionItem(chat, 'recent'))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
 
