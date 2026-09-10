@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import logoIcon from '../assets/icons/logo.svg';
+import logoDongson from '../assets/logo-dongson.jpg';
 
 export default function ClientAuthLayout() {
   return (
@@ -28,8 +28,12 @@ export default function ClientAuthLayout() {
 
         {/* Nội dung Cột trái */}
         <div className="relative z-10 flex flex-col items-center text-center px-12">
-          <div className="mb-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md shadow-lg border border-white/20">
-            <img src={logoIcon} alt="E-SPIRIT Logo" className="h-14 w-14 brightness-0 invert opacity-90" />
+          <div className="mb-8 h-28 w-28 overflow-hidden rounded-full shadow-2xl border border-white/20">
+            <img
+              src={logoDongson}
+              alt="E-SPIRIT Logo"
+              className="h-full w-full object-cover mix-blend-screen scale-[1.18]"
+            />
           </div>
           <h1 className="font-serif text-4xl font-bold leading-tight text-white mb-4">
             E-SPIRIT
@@ -50,8 +54,12 @@ export default function ClientAuthLayout() {
         <div className="w-full max-w-md">
           {/* Logo E-SPIRIT (Chỉ hiển thị trên Mobile/Tablet vì Desktop đã có ở cột trái) */}
           <div className="mb-10 flex flex-col items-center justify-center lg:hidden">
-            <div className="mb-3 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#7A1E24] shadow-lg">
-              <img src={logoIcon} alt="E-SPIRIT Logo" className="h-12 w-12 brightness-0 invert opacity-90" />
+            <div className="mb-3 h-20 w-20 overflow-hidden rounded-full bg-[#7A1E24] shadow-lg">
+              <img
+                src={logoDongson}
+                alt="E-SPIRIT Logo"
+                className="h-full w-full object-cover mix-blend-screen scale-[1.18]"
+              />
             </div>
             <h1 className="font-serif text-3xl font-bold text-[#2A1610]">
               E-SPIRIT
