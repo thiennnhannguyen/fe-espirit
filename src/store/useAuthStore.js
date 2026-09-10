@@ -1,12 +1,33 @@
 import { create } from 'zustand';
+import { authService } from '../services/authService';
+import { useChatStore } from './useChatStore';
 
 // Lấy thông tin user và token từ localStorage (nếu có) khi khởi tạo app
 const storedUser = JSON.parse(localStorage.getItem('user_info')) || null;
 const storedToken = localStorage.getItem('access_token') || null;
 
-export const useAuthStore = create((set) => ({
+export const useAuthStore = create((set, get) => ({
   user: storedUser,
   isAuthenticated: !!storedToken,
+  isCheckingAuth: true, // Thêm state loading cho lần đầu check auth
+
+  // Action: Kiểm tra và duy trì đăng nhập
+  initializeAuth: async () => {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      set({ isAuthenticated: false, user: null, isCheckingAuth: false });
+      return;
+    }
+
+    try {
+      const userData = await authService.getCurrentUser();
+      set({ user: userData, isAuthenticated: true, isCheckingAuth: false });
+    } catch (error) {
+      // Token hết hạn hoặc lỗi
+      get().logout();
+      set({ isCheckingAuth: false });
+    }
+  },
 
   // Action: Đăng nhập
   login: (userData, token) => {
@@ -20,5 +41,8 @@ export const useAuthStore = create((set) => ({
     localStorage.removeItem('access_token');
     localStorage.removeItem('user_info');
     set({ user: null, isAuthenticated: false });
+    
+    // Xóa sạch trạng thái chat cũ để không bị rò rỉ dữ liệu sang tài khoản khác
+    useChatStore.getState().clearChatStore();
   },
 }));

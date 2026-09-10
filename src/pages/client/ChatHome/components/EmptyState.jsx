@@ -1,8 +1,17 @@
-import { ScrollText, Package, Compass, Sparkles } from 'lucide-react';
+import { ScrollText, Package, Compass, Sparkles, Calendar, Clock } from 'lucide-react';
+import { useState } from 'react';
 import { useAuthStore } from '../../../../store/useAuthStore';
+import { useCalendarStore } from '../../../../store/useCalendarStore';
+import DateLookupModal from '../../../../components/client/DateLookupModal';
+import MonthlyCalendarModal from '../../../../components/client/MonthlyCalendarModal';
+import AuspiciousHoursModal from '../../../../components/client/AuspiciousHoursModal';
 
 export default function EmptyState() {
   const { user, isAuthenticated } = useAuthStore();
+  const { todayData } = useCalendarStore();
+  const [isLookupModalOpen, setIsLookupModalOpen] = useState(false);
+  const [isMonthlyCalendarOpen, setIsMonthlyCalendarOpen] = useState(false);
+  const [isHoursModalOpen, setIsHoursModalOpen] = useState(false);
 
   const suggestions = [
     {
@@ -17,15 +26,27 @@ export default function EmptyState() {
     },
     {
       id: 3,
-      text: 'Xem ngày xuất hành',
+      text: 'Tra cứu ngày Âm Dương',
       icon: <Compass size={18} className="text-amber-600/70" />,
+      onClick: () => setIsLookupModalOpen(true)
     },
     {
       id: 4,
-      text: 'Tra cứu sao hạn',
-      icon: <Sparkles size={18} className="text-amber-600/70" />,
+      text: 'Xem Lịch Tháng',
+      icon: <Calendar size={18} className="text-amber-600/70" />,
+      onClick: () => setIsMonthlyCalendarOpen(true)
+    },
+    {
+      id: 5,
+      text: 'Giờ Hoàng Đạo Hôm Nay',
+      icon: <Clock size={18} className="text-amber-600/70" />,
+      onClick: () => setIsHoursModalOpen(true)
     },
   ];
+
+  const dateText = todayData 
+    ? `Hôm nay là ${todayData.lunar_day}/${todayData.lunar_month} Âm lịch`
+    : `Hôm nay`;
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center py-8">
@@ -35,7 +56,7 @@ export default function EmptyState() {
           <span className="font-bold">
             Xin chào {isAuthenticated && user?.username ? user.username : 'tín chủ'},
           </span><br />
-          Hôm nay là 18/07 Âm lịch. Bạn cần mình trợ giúp gì cho các nghi lễ tâm linh hôm nay không?
+          {dateText}. Bạn cần mình trợ giúp gì cho các nghi lễ tâm linh hôm nay không?
         </h2>
       </div>
 
@@ -44,6 +65,7 @@ export default function EmptyState() {
         {suggestions.map((item) => (
           <button
             key={item.id}
+            onClick={item?.onClick}
             className="group relative flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 text-left shadow-sm transition-all duration-200 ease-in-out hover:border-amber-400/50 hover:bg-gray-50 hover:shadow-md focus:outline-none"
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-50 transition-colors group-hover:bg-amber-100/50">
@@ -55,6 +77,18 @@ export default function EmptyState() {
           </button>
         ))}
       </div>
+
+      {isLookupModalOpen && (
+        <DateLookupModal onClose={() => setIsLookupModalOpen(false)} />
+      )}
+
+      {isMonthlyCalendarOpen && (
+        <MonthlyCalendarModal onClose={() => setIsMonthlyCalendarOpen(false)} />
+      )}
+
+      {isHoursModalOpen && (
+        <AuspiciousHoursModal onClose={() => setIsHoursModalOpen(false)} />
+      )}
     </div>
   );
 }

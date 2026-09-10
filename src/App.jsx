@@ -1,7 +1,24 @@
+import { useEffect } from 'react'
 import AppRoutes from './routes/AppRoutes'
 import { Toaster } from 'react-hot-toast'
+import { useAuthStore } from './store/useAuthStore'
+import { Loader2 } from 'lucide-react'
 
 export default function App() {
+  const { initializeAuth, isCheckingAuth } = useAuthStore()
+
+  useEffect(() => {
+    initializeAuth()
+  }, [initializeAuth])
+
+  if (isCheckingAuth) {
+    return (
+      <div className="flex h-screen w-screen items-center justify-center bg-[#FAF5EC]">
+        <Loader2 className="h-8 w-8 animate-spin text-[#CAA46A]" />
+      </div>
+    )
+  }
+
   return (
     <>
       {/* Khởi tạo Toaster ở Root để gọi toast() ở bất kỳ đâu */}

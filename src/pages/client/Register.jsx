@@ -6,12 +6,10 @@ import { authService } from '../../services/authService';
 
 export default function Register() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,17 +18,17 @@ export default function Register() {
     e.preventDefault();
     
     // Validation
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!username || !email || !password) {
       toast.error('Vui lòng nhập đầy đủ thông tin bắt buộc!');
       return;
     }
     
-    if (formData.password.length < 6) {
+    if (password.length < 6) {
       toast.error('Mật khẩu phải có ít nhất 6 ký tự!');
       return;
     }
 
-    if (formData.password !== formData.confirmPassword) {
+    if (password !== confirmPassword) {
       toast.error('Mật khẩu xác nhận không khớp!');
       return;
     }
@@ -38,11 +36,12 @@ export default function Register() {
     setIsLoading(true);
     
     try {
-      await authService.register({
-        username: formData.username,
-        email: formData.email,
-        password: formData.password
-      });
+      const payload = {
+        username: username,
+        email: email,
+        password: password
+      };
+      await authService.register(payload);
       
       toast.success('Đăng ký thành công! Vui lòng đăng nhập.');
       navigate('/login'); // Chuyển hướng sang trang đăng nhập
@@ -80,8 +79,8 @@ export default function Register() {
             </div>
             <input
               type="text"
-              value={formData.username}
-              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="w-full rounded-xl border border-gray-200 bg-white py-3 pl-11 pr-4 text-sm text-gray-800 transition-all focus:border-[#CAA46A] focus:outline-none focus:ring-2 focus:ring-[#CAA46A]/20"
               placeholder="VD: NguyenVanA"
             />
@@ -97,8 +96,8 @@ export default function Register() {
             </div>
             <input
               type="text"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full rounded-xl border border-gray-200 bg-white py-3 pl-11 pr-4 text-sm text-gray-800 transition-all focus:border-[#CAA46A] focus:outline-none focus:ring-2 focus:ring-[#CAA46A]/20"
               placeholder="Nhập email của bạn"
             />
@@ -114,8 +113,8 @@ export default function Register() {
             </div>
             <input
               type={showPassword ? 'text' : 'password'}
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full rounded-xl border border-gray-200 bg-white py-3 pl-11 pr-11 text-sm text-gray-800 transition-all focus:border-[#CAA46A] focus:outline-none focus:ring-2 focus:ring-[#CAA46A]/20"
               placeholder="Tối thiểu 6 ký tự"
             />
@@ -138,9 +137,9 @@ export default function Register() {
             </div>
             <input
               type={showConfirmPassword ? 'text' : 'password'}
-              value={formData.confirmPassword}
-              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-              className={`w-full rounded-xl border ${formData.confirmPassword && formData.password !== formData.confirmPassword ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-[#CAA46A] focus:ring-[#CAA46A]/20'} bg-white py-3 pl-11 pr-11 text-sm text-gray-800 transition-all focus:outline-none focus:ring-2`}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className={`w-full rounded-xl border ${confirmPassword && password !== confirmPassword ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-[#CAA46A] focus:ring-[#CAA46A]/20'} bg-white py-3 pl-11 pr-11 text-sm text-gray-800 transition-all focus:outline-none focus:ring-2`}
               placeholder="Nhập lại mật khẩu"
             />
             <button
@@ -151,7 +150,7 @@ export default function Register() {
               {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </div>
-          {formData.confirmPassword && formData.password !== formData.confirmPassword && (
+          {confirmPassword && password !== confirmPassword && (
             <p className="mt-1 text-xs text-red-500">Mật khẩu xác nhận không khớp.</p>
           )}
         </div>

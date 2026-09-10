@@ -1,15 +1,19 @@
 import { useState } from 'react';
-import { Menu, ChevronDown, Bell } from 'lucide-react';
+import { Menu, ChevronDown, Bell, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import UserDropdown from '../../../../components/client/UserDropdown';
+import CalendarModal from '../../../../components/client/CalendarModal';
 import { useAuthStore } from '../../../../store/useAuthStore';
+import { useCalendarStore } from '../../../../store/useCalendarStore';
 
 export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedback, onOpenProfile }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const navigate = useNavigate();
   
   // Lấy trạng thái từ store
   const { user, isAuthenticated } = useAuthStore();
+  const { todayData } = useCalendarStore();
 
   // Khởi tạo chữ cái đầu của username nếu đã đăng nhập
   const initial = user?.username ? user.username.charAt(0).toUpperCase() : 'U';
@@ -31,14 +35,29 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
 
       {/* Ở Giữa: Widget Lịch Âm Mini */}
       <div className="flex items-center">
-        <div className="flex items-center gap-2 rounded-full border border-stone-200/80 bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md transition-all hover:bg-white">
-          <span className="font-serif text-xs font-semibold text-[#2A1610] sm:text-sm">
-            30/08/2026 (18/07 Âm) • Mùng 1
-          </span>
-          <span className="inline-flex items-center justify-center text-amber-600 animate-pulse">
-            🔔
-          </span>
-        </div>
+        {todayData ? (
+          <div 
+            onClick={() => setIsCalendarOpen(true)}
+            className="flex items-center gap-2 rounded-full border border-amber-200/60 bg-gradient-to-r from-amber-50 to-white px-3 sm:px-4 py-1.5 shadow-sm backdrop-blur-md transition-all hover:shadow-md cursor-pointer"
+          >
+            <Calendar size={14} className="text-amber-600 shrink-0" />
+            <span className="font-serif text-xs font-medium text-amber-900 sm:text-sm whitespace-nowrap">
+              {todayData.day}/{todayData.month}/{todayData.year} <span className="hidden sm:inline">({todayData.lunar_day}/{todayData.lunar_month} Âm)</span>
+            </span>
+            {(todayData.is_first_day || todayData.is_full_moon || todayData.special_event) && (
+              <div className="flex items-center gap-1.5 border-l border-amber-200/80 pl-2 sm:pl-2.5">
+                <span className="text-xs font-semibold text-amber-700 hidden sm:inline-block whitespace-nowrap">
+                  {todayData.special_event || (todayData.is_first_day ? 'Mùng 1' : 'Ngày Rằm')}
+                </span>
+                <span className="inline-flex items-center justify-center text-amber-500 animate-[bounce_2s_infinite]">
+                  🔔
+                </span>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="flex h-8 w-32 sm:w-48 animate-pulse items-center rounded-full bg-stone-100/80 px-4 py-1.5" />
+        )}
       </div>
 
       {/* Bên Phải: User Action Area */}
@@ -82,6 +101,11 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
           </button>
         )}
       </div>
+
+      {/* Calendar Modal */}
+      {isCalendarOpen && (
+        <CalendarModal onClose={() => setIsCalendarOpen(false)} />
+      )}
     </header>
   );
 }

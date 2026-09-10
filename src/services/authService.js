@@ -12,10 +12,12 @@ export const authService = {
   },
 
   getCurrentUser: async (token) => {
-    // Lấy thông tin user hiện tại bằng token vừa nhận được
-    const response = await api.get('/api/v1/users/me', {
+    const accessToken = token || localStorage.getItem('access_token');
+    if (!accessToken) throw new Error("No token found");
+    
+    const response = await api.get('/api/v1/auth/me', {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${accessToken}`
       }
     });
     return response.data;

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import MessageBubble from './MessageBubble';
 
-export default function MessageList({ messages, isTyping }) {
+export default function MessageList({ messages, isSending }) {
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -10,7 +10,7 @@ export default function MessageList({ messages, isTyping }) {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, isTyping]);
+  }, [messages, isSending]);
 
   return (
     <div className="flex w-full flex-col py-6">
@@ -19,7 +19,7 @@ export default function MessageList({ messages, isTyping }) {
       ))}
 
       {/* Typing Indicator */}
-      {isTyping && (
+      {isSending && (
         <div className="flex w-full justify-start mb-6">
           <div className="mr-3 mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white border border-amber-200/50 shadow-sm text-amber-500">
             <span className="font-serif text-lg leading-none">✨</span>
