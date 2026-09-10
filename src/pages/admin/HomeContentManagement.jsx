@@ -266,15 +266,9 @@ export default function HomeContentManagement() {
       description: 'Nền tảng kết nối tâm linh và bảo tồn các di sản tín ngưỡng truyền thống.',
       imageUrl: '' 
     },
-    featuredArticles: [
-      { id: 'art_1', title: 'Ý nghĩa mâm cúng ngày Rằm tháng 7', category: 'Nghi thức', date: '2026-08-15' },
-      { id: 'art_2', title: 'Cách đi lễ Chùa đúng chuẩn', category: 'Văn hoá', date: '2026-08-10' }
-    ],
+    featuredArticles: [],
     holidayEvent: 'Rằm tháng 7',
-    recommendedProducts: [
-      { id: 'prod_1', name: 'Combo mâm cúng cô hồn cơ bản', price: '450.000đ' },
-      { id: 'prod_2', name: 'Bộ vàng mã', price: '120.000đ' },
-    ],
+    recommendedProducts: [],
     footer: {
       phone: '1900 1234',
       email: 'support@e-spirit.vn',

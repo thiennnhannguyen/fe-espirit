@@ -13,33 +13,14 @@ import {
   Legend
 } from 'recharts';
 
-// --- MOCK DATA ---
-const chatActivityData = [
-  { name: 'Mùng 10', queries: 800 },
-  { name: 'Mùng 11', queries: 950 },
-  { name: 'Mùng 12', queries: 1200 },
-  { name: 'Mùng 13', queries: 2100 },
-  { name: 'Mùng 14', queries: 3500 },
-  { name: 'Rằm', queries: 5400 },
-  { name: '16 ÂL', queries: 2800 },
-];
+// --- EMPTY DATA (Chờ tích hợp API thực) ---
+const chatActivityData = [];
 
-const religionDistributionData = [
-  { name: 'Phật giáo', value: 45 },
-  { name: 'Đạo Mẫu', value: 30 },
-  { name: 'Tín ngưỡng dân gian', value: 20 },
-  { name: 'Khác', value: 5 },
-];
+const religionDistributionData = [];
 
 const COLORS = ['#7A1E24', '#CAA46A', '#A3684B', '#DFD3C3'];
 
-const recentQuestions = [
-  { id: 1, time: '2 phút trước', user: 'Hương Phạm', question: 'Văn khấn cô hồn rằm tháng 7' },
-  { id: 2, time: '5 phút trước', user: 'Lê Hoàng Minh', question: 'Cách cúng xe mới mua' },
-  { id: 3, time: '12 phút trước', user: 'Nguyễn Văn An', question: 'Mâm cúng ông Công ông Táo gồm những gì?' },
-  { id: 4, time: '20 phút trước', user: 'Trần Thị Bình', question: 'Giờ tốt xuất hành ngày mai' },
-  { id: 5, time: '35 phút trước', user: 'Khách vãng lai', question: 'Nghi thức dâng sao giải hạn' },
-];
+const recentQuestions = [];
 
 export default function Dashboard() {
   return (
