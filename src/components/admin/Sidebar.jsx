@@ -6,7 +6,6 @@ const menuItems = [
   { name: 'Tổng quan', path: '/admin/dashboard', icon: LayoutDashboard },
   { name: 'Sự kiện', path: '/admin/events', icon: CalendarDays },
   { name: 'Người dùng', path: '/admin/users', icon: Users },
-  { name: 'Chatbot', path: '/admin/chatbot', icon: Bot },
   { name: 'Trang chủ', path: '/admin/home-content', icon: Home },
 ];
 

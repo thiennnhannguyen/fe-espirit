@@ -35,7 +35,6 @@ import EventManagement from '../pages/admin/EventManagement'
 import EventForm from '../pages/admin/EventForm'
 import UserManagement from '../pages/admin/UserManagement'
 import UserDetail from '../pages/admin/UserDetail'
-import ChatbotContent from '../pages/admin/ChatbotManagement'
 import HomeContent from '../pages/admin/HomeContentManagement'
 import Reports from '../pages/admin/Reports'
 
@@ -92,8 +91,6 @@ export default function AppRoutes() {
 
           <Route path="/admin/users" element={<UserManagement />} />
           <Route path="/admin/users/:id" element={<UserDetail />} />
-
-          <Route path="/admin/chatbot" element={<ChatbotContent />} />
           <Route path="/admin/home-content" element={<HomeContent />} />
           <Route path="/admin/reports" element={<Reports />} />
         </Route>
