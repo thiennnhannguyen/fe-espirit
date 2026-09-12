@@ -184,10 +184,9 @@ export default function ProfileModal({ isOpen, onClose }) {
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {/* Avatar Section */}
-          <div className="flex items-center gap-4 mb-2">
-            
+          <div className="flex flex-col items-center justify-center mb-6">
             {/* Cụm Avatar Clickable */}
-            <div className="relative group shrink-0">
+            <div className="relative group shrink-0 mb-2">
               <input 
                 type="file" 
                 id="avatar-upload" 
@@ -197,7 +196,7 @@ export default function ProfileModal({ isOpen, onClose }) {
               />
               <label 
                 htmlFor="avatar-upload"
-                className="flex h-16 w-16 items-center justify-center rounded-full bg-[#2A1610] text-xl font-bold text-white shadow-sm overflow-hidden relative cursor-pointer"
+                className="flex h-20 w-20 items-center justify-center rounded-full bg-[#2A1610] text-2xl font-bold text-white shadow-md overflow-hidden relative cursor-pointer ring-4 ring-[#FAF5EC] transition-all group-hover:ring-[#CAA46A]/30"
               >
                 {formData.avatar_url ? (
                   <>
@@ -219,24 +218,12 @@ export default function ProfileModal({ isOpen, onClose }) {
 
                 {/* Overlay Hover */}
                 <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Camera size={18} className="text-white mb-0.5" />
-                  <span className="text-[10px] text-white font-medium">Đổi ảnh</span>
+                  <Camera size={20} className="text-white mb-1" />
+                  <span className="text-[11px] text-white font-medium">Đổi ảnh</span>
                 </div>
               </label>
             </div>
-
-            <div className="flex-1">
-              <label className="mb-1.5 block text-sm font-medium text-stone-700">
-                Hoặc nhập đường dẫn ảnh (URL)
-              </label>
-              <input
-                type="text"
-                value={formData.avatar_url}
-                onChange={(e) => setFormData({ ...formData, avatar_url: e.target.value })}
-                className="w-full rounded-xl border border-stone-300 bg-white px-4 py-2 text-sm text-stone-800 focus:border-[#CAA46A] focus:outline-none focus:ring-2 focus:ring-[#CAA46A]/20 transition-all"
-                placeholder="https://example.com/avatar.jpg"
-              />
-            </div>
+            <p className="text-xs text-stone-500">Nhấn vào ảnh để thay đổi</p>
           </div>
           
           <div>
