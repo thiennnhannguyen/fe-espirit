@@ -26,16 +26,16 @@ export default function ForgotPassword() {
       <div 
         className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle at center, #7A1E24 2px, transparent 2px)',
+          backgroundImage: 'radial-gradient(circle at center, #2A1610 2px, transparent 2px)',
           backgroundSize: '40px 40px'
         }}
       ></div>
       
       <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.04] pointer-events-none">
         <svg viewBox="0 0 200 200" className="w-[800px] h-[800px] animate-[spin_120s_linear_infinite]">
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#7A1E24" strokeWidth="2" strokeDasharray="10 5" />
-          <circle cx="100" cy="100" r="70" fill="none" stroke="#7A1E24" strokeWidth="1" />
-          <polygon points="100,20 120,80 180,100 120,120 100,180 80,120 20,100 80,80" fill="none" stroke="#7A1E24" strokeWidth="1" />
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#2A1610" strokeWidth="2" strokeDasharray="10 5" />
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#2A1610" strokeWidth="1" />
+          <polygon points="100,20 120,80 180,100 120,120 100,180 80,120 20,100 80,80" fill="none" stroke="#2A1610" strokeWidth="1" />
         </svg>
       </div>
 
@@ -75,7 +75,7 @@ export default function ForgotPassword() {
                 <button
                   type="submit"
                   disabled={isLoading || !email}
-                  className="flex w-full items-center justify-center rounded-xl bg-[#7A1E24] py-3 text-sm font-bold text-white shadow-lg shadow-[#7A1E24]/20 transition-all hover:bg-[#5A212C] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#7A1E24] focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="flex w-full items-center justify-center rounded-xl bg-[#2A1610] py-3 text-sm font-bold text-white shadow-lg shadow-[#2A1610]/20 transition-all hover:bg-[#1A0D09] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#2A1610] focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <>
@@ -104,7 +104,7 @@ export default function ForgotPassword() {
           <div className="mt-8 text-center">
             <Link 
               to="/admin/login" 
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#CAA46A] hover:text-[#7A1E24] transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#CAA46A] hover:text-[#2A1610] transition-colors"
             >
               <ArrowLeft size={16} /> Quay lại đăng nhập
             </Link>

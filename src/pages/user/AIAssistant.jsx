@@ -17,7 +17,7 @@ const MessageBubble = ({ message }) => {
         
         {/* Avatar */}
         <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full shadow-sm mt-1
-          ${isUser ? 'bg-[#7A1E24] text-white' : 'bg-white border border-[#CAA46A]/30 text-[#CAA46A]'}`}
+          ${isUser ? 'bg-[#2A1610] text-white' : 'bg-white border border-[#CAA46A]/30 text-[#CAA46A]'}`}
         >
           {isUser ? <User size={16} /> : <Sparkles size={16} />}
         </div>
@@ -26,7 +26,7 @@ const MessageBubble = ({ message }) => {
         <div className="flex flex-col gap-2">
           {isUser ? (
             // Tin nhắn của User
-            <div className="rounded-2xl rounded-tr-none bg-[#7A1E24] px-4 py-3 text-sm text-white shadow-sm">
+            <div className="rounded-2xl rounded-tr-none bg-[#2A1610] px-4 py-3 text-sm text-white shadow-sm">
               <p className="leading-relaxed whitespace-pre-wrap">{message.text}</p>
             </div>
           ) : (
@@ -56,7 +56,7 @@ const MessageBubble = ({ message }) => {
                   {/* Nút Copy */}
                   <button 
                     onClick={() => handleCopy(message.ritualText)}
-                    className="absolute right-3 top-3 flex items-center gap-1.5 rounded-md bg-white/80 px-2.5 py-1.5 text-xs font-medium text-gray-600 shadow-sm border border-gray-200 transition-colors hover:bg-gray-50 hover:text-[#7A1E24]"
+                    className="absolute right-3 top-3 flex items-center gap-1.5 rounded-md bg-white/80 px-2.5 py-1.5 text-xs font-medium text-gray-600 shadow-sm border border-gray-200 transition-colors hover:bg-gray-50 hover:text-[#2A1610]"
                     title="Copy văn khấn"
                   >
                     <Copy size={14} /> Copy
@@ -154,7 +154,7 @@ export default function AIAssistant() {
       {/* 1. Header (Top Nav) */}
       <header className="flex h-16 shrink-0 items-center justify-between border-b border-[#CAA46A]/20 bg-white/80 px-4 shadow-sm backdrop-blur-md sm:px-6 z-10">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#7A1E24] text-white shadow-sm">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#2A1610] text-white shadow-sm">
             <Sparkles size={20} />
           </div>
           <div>
@@ -188,7 +188,7 @@ export default function AIAssistant() {
           ) : (
             /* Trạng thái rỗng: Cột chính giữa */
             <div className="flex flex-1 flex-col items-center justify-center text-center opacity-80 mt-10">
-              <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#CAA46A]/10 text-[#7A1E24]">
+              <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#CAA46A]/10 text-[#2A1610]">
                 <Sparkles size={40} />
               </div>
               <h2 className="mb-2 font-serif text-2xl font-bold text-[#2A1610]">Xin chào, tôi có thể giúp gì cho bạn?</h2>
@@ -202,7 +202,7 @@ export default function AIAssistant() {
                   <button
                     key={idx}
                     onClick={() => handleSend(prompt)}
-                    className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-left text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-[#CAA46A] hover:text-[#7A1E24] hover:shadow-md"
+                    className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-left text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-[#CAA46A] hover:text-[#2A1610] hover:shadow-md"
                   >
                     {prompt}
                     <Send size={14} className="text-gray-300" />
@@ -224,7 +224,7 @@ export default function AIAssistant() {
                 <button
                   key={idx}
                   onClick={() => handleSend(prompt)}
-                  className="shrink-0 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:border-[#CAA46A] hover:bg-white hover:text-[#7A1E24]"
+                  className="shrink-0 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:border-[#CAA46A] hover:bg-white hover:text-[#2A1610]"
                 >
                   {prompt}
                 </button>
@@ -259,7 +259,7 @@ export default function AIAssistant() {
               disabled={!inputValue.trim()}
               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all focus:outline-none ${
                 inputValue.trim() 
-                  ? 'bg-[#7A1E24] text-white shadow-md hover:bg-[#5A212C]' 
+                  ? 'bg-[#2A1610] text-white shadow-md hover:bg-[#1A0D09]' 
                   : 'bg-gray-100 text-gray-400'
               }`}
             >

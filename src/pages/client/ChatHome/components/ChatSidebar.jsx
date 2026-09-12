@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { MessageSquare, Plus, Pin, PanelLeftClose, X, Edit2, Loader2, Trash2 } from 'lucide-react';
 import { useChatStore } from '../../../../store/useChatStore';
 import { useAuthStore } from '../../../../store/useAuthStore';
+import logoDongson from '../../../../assets/logo-dongson.jpg';
 
 export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
   const { 
@@ -152,7 +153,7 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
 
   return (
     <aside
-      className={`fixed inset-y-0 left-0 z-40 flex flex-col bg-[#7A1E24] text-white shadow-2xl transition-all duration-300 ease-in-out lg:static overflow-hidden ${
+      className={`fixed inset-y-0 left-0 z-40 flex flex-col bg-[#2A1610] text-white shadow-2xl transition-all duration-300 ease-in-out lg:static overflow-hidden ${
         isOpen ? 'w-[260px] translate-x-0' : 'w-0 -translate-x-full lg:translate-x-0'
       }`}
     >
@@ -161,8 +162,13 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
         <div className="flex flex-col gap-4 p-4 border-b border-white/10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-amber-300 shadow-inner backdrop-blur-xs">
-                <span className="font-serif text-lg font-bold">✨</span>
+              {/* Logo Trống Đồng */}
+              <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full">
+                <img
+                  src={logoDongson}
+                  alt="E-Spirit Logo"
+                  className="h-full w-full object-cover mix-blend-screen opacity-90 scale-[1.18]"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-base font-bold tracking-wider text-amber-100">

@@ -49,7 +49,7 @@ export default function UserDropdown({ isOpen, onClose, onOpenFeedback, onOpenPr
     >
       {/* Top Section: Thông tin User tóm tắt */}
       <div className="flex items-center gap-3 border-b border-gray-100 px-3 py-2.5 pb-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#7A1E24] text-white font-semibold text-sm shadow-sm">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2A1610] text-white font-semibold text-sm shadow-sm">
           {initial}
         </div>
         <div className="flex flex-col min-w-0">
@@ -64,6 +64,7 @@ export default function UserDropdown({ isOpen, onClose, onOpenFeedback, onOpenPr
 
       {/* Menu Items */}
       <div className="py-1">
+        {/* (Hidden)
         <button
           onClick={() => {
             console.log('Sync Calendar clicked');
@@ -74,6 +75,7 @@ export default function UserDropdown({ isOpen, onClose, onOpenFeedback, onOpenPr
           <Calendar size={18} className="text-gray-500" />
           <span>Đồng bộ Calendar</span>
         </button>
+        */}
 
         <button
           onClick={() => {

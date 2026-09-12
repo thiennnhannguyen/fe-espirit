@@ -13,33 +13,14 @@ import {
   Legend
 } from 'recharts';
 
-// --- MOCK DATA ---
-const chatActivityData = [
-  { name: 'Mùng 10', queries: 800 },
-  { name: 'Mùng 11', queries: 950 },
-  { name: 'Mùng 12', queries: 1200 },
-  { name: 'Mùng 13', queries: 2100 },
-  { name: 'Mùng 14', queries: 3500 },
-  { name: 'Rằm', queries: 5400 },
-  { name: '16 ÂL', queries: 2800 },
-];
+// --- EMPTY DATA (Chờ tích hợp API thực) ---
+const chatActivityData = [];
 
-const religionDistributionData = [
-  { name: 'Phật giáo', value: 45 },
-  { name: 'Đạo Mẫu', value: 30 },
-  { name: 'Tín ngưỡng dân gian', value: 20 },
-  { name: 'Khác', value: 5 },
-];
+const religionDistributionData = [];
 
-const COLORS = ['#7A1E24', '#CAA46A', '#A3684B', '#DFD3C3'];
+const COLORS = ['#2A1610', '#CAA46A', '#A3684B', '#DFD3C3'];
 
-const recentQuestions = [
-  { id: 1, time: '2 phút trước', user: 'Hương Phạm', question: 'Văn khấn cô hồn rằm tháng 7' },
-  { id: 2, time: '5 phút trước', user: 'Lê Hoàng Minh', question: 'Cách cúng xe mới mua' },
-  { id: 3, time: '12 phút trước', user: 'Nguyễn Văn An', question: 'Mâm cúng ông Công ông Táo gồm những gì?' },
-  { id: 4, time: '20 phút trước', user: 'Trần Thị Bình', question: 'Giờ tốt xuất hành ngày mai' },
-  { id: 5, time: '35 phút trước', user: 'Khách vãng lai', question: 'Nghi thức dâng sao giải hạn' },
-];
+const recentQuestions = [];
 
 export default function Dashboard() {
   return (
@@ -93,7 +74,7 @@ export default function Dashboard() {
               <p className="text-sm font-medium text-gray-500">Lượt hỏi Chatbot</p>
               <h3 className="mt-1 font-serif text-2xl font-bold text-gray-900">36,750</h3>
             </div>
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FAF5EC] text-[#7A1E24]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FAF5EC] text-[#2A1610]">
               <MessageSquare size={24} />
             </div>
           </div>
@@ -147,15 +128,15 @@ export default function Dashboard() {
                 />
                 <Tooltip
                   contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-                  itemStyle={{ color: '#7A1E24', fontWeight: 'bold' }}
+                  itemStyle={{ color: '#2A1610', fontWeight: 'bold' }}
                 />
                 <Line
                   type="monotone"
                   dataKey="queries"
                   name="Lượt hỏi"
-                  stroke="#7A1E24"
+                  stroke="#2A1610"
                   strokeWidth={3}
-                  dot={{ r: 4, fill: '#7A1E24', strokeWidth: 0 }}
+                  dot={{ r: 4, fill: '#2A1610', strokeWidth: 0 }}
                   activeDot={{ r: 6, stroke: '#FAF5EC', strokeWidth: 4 }}
                 />
               </LineChart>
@@ -207,7 +188,7 @@ export default function Dashboard() {
       <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
         <div className="mb-5 flex items-center justify-between border-b border-gray-100 pb-4">
           <h3 className="font-serif text-lg font-bold text-[#2A1610]">Các câu hỏi Chatbot mới nhất</h3>
-          <button className="flex items-center gap-1 text-sm font-medium text-[#7A1E24] hover:text-[#5A212C] transition-colors">
+          <button className="flex items-center gap-1 text-sm font-medium text-[#2A1610] hover:text-[#1A0D09] transition-colors">
             Xem tất cả lịch sử <ChevronRight size={16} />
           </button>
         </div>

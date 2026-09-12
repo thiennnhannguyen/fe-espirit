@@ -1,12 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, CalendarDays, Users, Bot, Home, X } from 'lucide-react';
-import logoIcon from '../../assets/icons/logo.svg';
+import logoDongson from '../../assets/logo-dongson.jpg';
 
 const menuItems = [
   { name: 'Tổng quan', path: '/admin/dashboard', icon: LayoutDashboard },
   { name: 'Sự kiện', path: '/admin/events', icon: CalendarDays },
   { name: 'Người dùng', path: '/admin/users', icon: Users },
-  { name: 'Chatbot', path: '/admin/chatbot', icon: Bot },
   { name: 'Trang chủ', path: '/admin/home-content', icon: Home },
 ];
 
@@ -20,7 +19,9 @@ export default function Sidebar({ isOpen, onClose }) {
       {/* Logo & Brand */}
       <div className="flex h-16 shrink-0 items-center justify-between border-b border-[#CAA46A]/20 px-6">
         <div className="flex items-center gap-3">
-          <img src={logoIcon} alt="Logo" className="h-8 w-8 brightness-0 invert opacity-90" />
+          <div className="h-9 w-9 shrink-0 overflow-hidden rounded-full">
+            <img src={logoDongson} alt="Logo" className="h-full w-full object-cover mix-blend-screen scale-[1.18]" />
+          </div>
           <span className="font-serif text-lg font-bold tracking-widest text-[#CAA46A]">
             E-SPIRIT
           </span>

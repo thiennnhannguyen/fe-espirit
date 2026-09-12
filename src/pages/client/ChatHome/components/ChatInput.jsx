@@ -189,7 +189,7 @@ export default function ChatInput() {
                 disabled={!hasContent || isSending}
                 className={`flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 focus:outline-none ${
                   hasContent && !isSending
-                    ? 'bg-[#7A1E24] text-white shadow-md hover:bg-[#63181d]'
+                    ? 'bg-[#2A1610] text-white shadow-md hover:bg-[#1A0D09]'
                     : 'bg-stone-100 text-stone-400 cursor-not-allowed'
                 }`}
                 title="Gửi tin nhắn"

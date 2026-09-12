@@ -15,7 +15,7 @@ export default function UserActivityModal({ isOpen, onClose, user }) {
         {/* Modal Header: Tóm tắt User */}
         <div className="flex items-start justify-between border-b border-gray-100 px-6 py-5 bg-[#FAF5EC]">
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#CAA46A]/20 text-sm font-bold text-[#7A1E24]">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#CAA46A]/20 text-sm font-bold text-[#2A1610]">
               {getInitials(user.name)}
             </div>
             <div>

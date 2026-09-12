@@ -14,7 +14,7 @@ export default function RitualCard({ data }) {
     <div className="my-2 flex w-full max-w-sm flex-col rounded-xl border border-[#D4AF37]/30 bg-[#FDFBF7] shadow-sm sm:max-w-md">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-[#D4AF37]/20 bg-amber-50/50 px-4 py-3">
-        <h3 className="font-serif text-lg font-semibold text-[#7A1E24]">
+        <h3 className="font-serif text-lg font-semibold text-[#2A1610]">
           {data.title || 'Văn khấn cổ truyền'}
         </h3>
       </div>

@@ -232,7 +232,7 @@ export default function UserManagement() {
 
       {/* 2. Filter & Search Section */}
       <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
-        <div className="flex items-center gap-2 mb-4 text-[#7A1E24] font-medium text-sm">
+        <div className="flex items-center gap-2 mb-4 text-[#2A1610] font-medium text-sm">
           <Filter size={18} />
           <span>Bộ lọc & Tìm kiếm</span>
         </div>
@@ -310,7 +310,7 @@ export default function UserManagement() {
                       
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#CAA46A]/20 text-xs font-bold text-[#7A1E24]">
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#CAA46A]/20 text-xs font-bold text-[#2A1610]">
                             {getInitials(user.username)}
                           </div>
                           <span className="font-medium text-gray-900">{user.username}</span>
@@ -448,7 +448,7 @@ export default function UserManagement() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex items-center gap-2 rounded-lg bg-[#7A1E24] px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#5A212C] focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-1 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 rounded-lg bg-[#2A1610] px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#1A0D09] focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-1 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
                   Lưu thay đổi

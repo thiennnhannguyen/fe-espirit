@@ -159,7 +159,7 @@ export default function Register() {
         <button
           type="submit"
           disabled={isLoading}
-          className="mt-6 flex w-full items-center justify-center rounded-xl bg-[#7A1E24] py-3 text-sm font-bold text-white shadow-lg shadow-[#7A1E24]/20 transition-all hover:bg-[#5A212C] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#7A1E24] focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
+          className="mt-6 flex w-full items-center justify-center rounded-xl bg-[#2A1610] py-3 text-sm font-bold text-white shadow-lg shadow-[#2A1610]/20 transition-all hover:bg-[#1A0D09] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#2A1610] focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {isLoading ? <Loader2 size={18} className="animate-spin mr-2" /> : null}
           {isLoading ? 'Đang khởi tạo...' : 'Đăng ký tài khoản'}
@@ -168,7 +168,7 @@ export default function Register() {
         {/* Redirect Link */}
         <p className="mt-8 text-center text-sm text-gray-600">
           Đã có tài khoản?{' '}
-          <Link to="/login" className="font-bold text-[#7A1E24] transition-colors hover:text-[#5A212C]">
+          <Link to="/login" className="font-bold text-[#2A1610] transition-colors hover:text-[#1A0D09]">
             Đăng nhập
           </Link>
         </p>

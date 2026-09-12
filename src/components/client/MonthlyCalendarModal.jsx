@@ -85,7 +85,7 @@ export default function MonthlyCalendarModal({ onClose }) {
 
           {/* Tiêu đề giữa */}
           <div className="text-center">
-            <h2 className="text-xl font-bold text-[#7A1E24] font-serif">
+            <h2 className="text-xl font-bold text-[#2A1610] font-serif">
               Tháng {month} Năm {year}
             </h2>
             <p className="text-xs text-stone-400 mt-0.5">Lịch Âm – Dương</p>
@@ -116,7 +116,7 @@ export default function MonthlyCalendarModal({ onClose }) {
             <div
               key={d}
               className={`py-3 text-center text-xs font-semibold uppercase tracking-wider ${
-                d === 'CN' ? 'text-[#7A1E24]' : 'text-gray-500'
+                d === 'CN' ? 'text-[#2A1610]' : 'text-gray-500'
               }`}
             >
               {d}
@@ -173,7 +173,7 @@ export default function MonthlyCalendarModal({ onClose }) {
 
                     {/* Ngày Dương */}
                     {isToday ? (
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#7A1E24] text-white text-sm font-semibold shadow-sm">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2A1610] text-white text-sm font-semibold shadow-sm">
                         {day.day}
                       </span>
                     ) : (
@@ -186,7 +186,7 @@ export default function MonthlyCalendarModal({ onClose }) {
                     <span
                       className={`mt-1 text-xs leading-none ${
                         isSpecialLunar
-                          ? 'font-bold text-[#7A1E24]'
+                          ? 'font-bold text-[#2A1610]'
                           : 'text-gray-400'
                       }`}
                     >

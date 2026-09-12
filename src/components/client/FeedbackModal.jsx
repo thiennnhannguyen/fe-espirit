@@ -87,7 +87,7 @@ export default function FeedbackModal({ isOpen, onClose }) {
             <button
               type="submit"
               disabled={isLoading}
-              className="flex items-center gap-2 rounded-xl bg-[#7A1E24] px-6 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:bg-[#63181d] focus:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+              className="flex items-center gap-2 rounded-xl bg-[#2A1610] px-6 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:bg-[#1A0D09] focus:outline-none disabled:cursor-not-allowed disabled:opacity-70"
             >
               {isLoading ? (
                 <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />

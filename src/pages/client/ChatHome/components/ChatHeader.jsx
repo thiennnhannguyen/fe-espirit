@@ -24,7 +24,7 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
       <div className="flex items-center gap-2">
         <button
           onClick={onToggleSidebar}
-          className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-gray-700 shadow-sm border border-stone-200/60 transition-colors hover:bg-white hover:text-[#7A1E24] ${
+          className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-gray-700 shadow-sm border border-stone-200/60 transition-colors hover:bg-white hover:text-[#2A1610] ${
             isSidebarOpen ? 'lg:hidden' : ''
           }`}
           title={isSidebarOpen ? 'Đóng menu' : 'Mở menu'}
@@ -69,7 +69,7 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
               onClick={() => setIsDropdownOpen((prev) => !prev)}
               className="flex items-center gap-2 rounded-full bg-white/80 p-1.5 pl-2 pr-3 border border-stone-200/80 shadow-sm transition-all hover:bg-white focus:outline-none"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#7A1E24] text-xs font-bold text-white shadow-xs">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2A1610] text-xs font-bold text-white shadow-xs">
                 {initial}
               </div>
               <span className="hidden text-xs font-semibold text-gray-700 sm:inline-block max-w-[120px] truncate">
@@ -92,13 +92,28 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
             />
           </>
         ) : (
-          /* Nút Đăng nhập cho Khách vãng lai */
-          <button
-            onClick={() => navigate('/login')}
-            className="rounded-full bg-[#7A1E24] px-5 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#5A212C]"
-          >
-            Đăng nhập
-          </button>
+          /* Khối nút Đăng nhập / Đăng ký mới */
+          <div className="flex items-center gap-3">
+            {/* Nút Đăng nhập */}
+            <button 
+              onClick={() => navigate('/login')}
+              className="px-5 py-2 text-sm font-medium text-gray-700 bg-transparent rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all duration-300"
+            >
+              Đăng nhập
+            </button>
+            
+            {/* Nút Đăng ký */}
+            <button 
+              onClick={() => navigate('/register')}
+              className="px-5 py-2 text-sm font-medium text-white bg-[#2A1610] rounded-full shadow-md hover:bg-[#1A0D09] hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2"
+            >
+              Đăng ký
+              {/* Icon mũi tên hiện đại */}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
         )}
       </div>
 

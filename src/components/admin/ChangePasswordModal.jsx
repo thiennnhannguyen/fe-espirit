@@ -155,7 +155,7 @@ export default function ChangePasswordModal({ isOpen, onClose }) {
             disabled={!isFormValid || showToast}
             className={`rounded-lg px-4 py-2 text-sm font-medium shadow-sm transition-colors ${
               isFormValid && !showToast
-                ? 'bg-[#7A1E24] text-white hover:bg-[#5A212C]' 
+                ? 'bg-[#2A1610] text-white hover:bg-[#1A0D09]' 
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
             }`}
           >
