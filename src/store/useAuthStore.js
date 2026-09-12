@@ -36,6 +36,18 @@ export const useAuthStore = create((set, get) => ({
     set({ user: userData, isAuthenticated: true });
   },
 
+  // Action: Cập nhật thông tin cá nhân
+  updateProfile: async (data) => {
+    try {
+      const updatedUser = await authService.updateProfile(data);
+      localStorage.setItem('user_info', JSON.stringify(updatedUser));
+      set({ user: updatedUser });
+      return updatedUser;
+    } catch (error) {
+      throw error;
+    }
+  },
+
   // Action: Đăng xuất
   logout: () => {
     localStorage.removeItem('access_token');

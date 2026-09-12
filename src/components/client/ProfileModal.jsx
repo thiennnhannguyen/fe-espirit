@@ -7,12 +7,13 @@ import { authService } from '../../services/authService';
 import { deleteUser } from '../../services/adminUserService'; // Hàm delete đã có sẵn ở đây
 
 export default function ProfileModal({ isOpen, onClose }) {
-  const { user, login, logout } = useAuthStore();
+  const { user, updateProfile, logout } = useAuthStore();
   const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
     username: '',
     email: '',
+    avatar_url: '',
     password: ''
   });
   const [initialData, setInitialData] = useState(null); // Để đối chiếu Dirty state
@@ -25,6 +26,7 @@ export default function ProfileModal({ isOpen, onClose }) {
       const init = {
         username: user.username || '',
         email: user.email || '',
+        avatar_url: user.avatar_url || '',
         password: '' // Luôn bỏ trống khi mở
       };
       setFormData(init);
@@ -43,6 +45,7 @@ export default function ProfileModal({ isOpen, onClose }) {
     const isDirty = 
       formData.username !== initialData.username ||
       formData.email !== initialData.email ||
+      formData.avatar_url !== initialData.avatar_url ||
       (formData.password && formData.password.trim() !== '');
 
     if (isDirty) {
@@ -74,6 +77,9 @@ export default function ProfileModal({ isOpen, onClose }) {
     if (formData.email && formData.email !== initialData.email) {
       updatePayload.email = formData.email;
     }
+    if (formData.avatar_url !== initialData.avatar_url) {
+      updatePayload.avatar_url = formData.avatar_url;
+    }
     if (formData.password && formData.password.trim() !== '') {
       updatePayload.password = formData.password;
     }
@@ -92,13 +98,7 @@ export default function ProfileModal({ isOpen, onClose }) {
     setIsLoading(true);
 
     try {
-      const updatedUser = await authService.updateProfile(user.id, updatePayload);
-      
-      // Lấy token cũ để tái đăng nhập vào store
-      const token = localStorage.getItem('access_token');
-      
-      // Cập nhật thông tin vào Zustand store (Hàm login sẽ đè lại LocalStorage & State)
-      login(updatedUser, token);
+      await updateProfile(updatePayload);
 
       toast.success('Cập nhật thông tin thành công!');
       onClose();
@@ -161,6 +161,41 @@ export default function ProfileModal({ isOpen, onClose }) {
 
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
+          {/* Avatar Section */}
+          <div className="flex items-center gap-4 mb-2">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#2A1610] text-xl font-bold text-white shadow-sm overflow-hidden relative">
+              {formData.avatar_url ? (
+                <>
+                  <img 
+                    src={formData.avatar_url} 
+                    alt="Avatar" 
+                    className="h-full w-full object-cover" 
+                    onError={(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'flex'; }}
+                  />
+                  <div style={{ display: 'none' }} className="h-full w-full items-center justify-center bg-[#2A1610] text-white">
+                    {formData.username ? formData.username.charAt(0).toUpperCase() : 'U'}
+                  </div>
+                </>
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-[#2A1610] text-white">
+                  {formData.username ? formData.username.charAt(0).toUpperCase() : 'U'}
+                </div>
+              )}
+            </div>
+            <div className="flex-1">
+              <label className="mb-1.5 block text-sm font-medium text-stone-700">
+                Đường dẫn ảnh đại diện (URL)
+              </label>
+              <input
+                type="text"
+                value={formData.avatar_url}
+                onChange={(e) => setFormData({ ...formData, avatar_url: e.target.value })}
+                className="w-full rounded-xl border border-stone-300 bg-white px-4 py-2 text-sm text-stone-800 focus:border-[#CAA46A] focus:outline-none focus:ring-2 focus:ring-[#CAA46A]/20 transition-all"
+                placeholder="https://example.com/avatar.jpg"
+              />
+            </div>
+          </div>
+          
           <div>
             <label className="mb-1.5 block text-sm font-medium text-stone-700">
               Tên hiển thị

@@ -48,12 +48,16 @@ export const authService = {
     return { success: true };
   },
 
-  updateProfile: async (userId, payload) => {
+  updateProfile: async (data) => {
     const token = localStorage.getItem('access_token');
-    const response = await api.patch(`/api/v1/users/${userId}`, payload, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    // Lọc bỏ password nếu chuỗi rỗng
+    const payload = { ...data };
+    if (!payload.password) {
+      delete payload.password;
+    }
+    
+    const response = await api.put('/api/v1/users/me', payload, {
+      headers: { Authorization: `Bearer ${token}` }
     });
     return response.data;
   },
