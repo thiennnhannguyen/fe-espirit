@@ -11,13 +11,13 @@ export default function AdminLayout() {
       {/* Background Watermark Trống Đồng (nằm ở Main Layout) */}
       <div className="pointer-events-none fixed bottom-0 right-0 z-0 translate-x-1/3 translate-y-1/3 opacity-[0.03]">
         <svg width="600" height="600" viewBox="0 0 800 800" fill="none" aria-hidden="true">
-          <circle cx="400" cy="400" r="380" stroke="#7A1E24" strokeWidth="2" />
-          <circle cx="400" cy="400" r="360" stroke="#7A1E24" strokeWidth="1" strokeDasharray="4 8" />
-          <circle cx="400" cy="400" r="280" stroke="#7A1E24" strokeWidth="2" />
-          <circle cx="400" cy="400" r="120" stroke="#7A1E24" strokeWidth="3" />
+          <circle cx="400" cy="400" r="380" stroke="#2A1610" strokeWidth="2" />
+          <circle cx="400" cy="400" r="360" stroke="#2A1610" strokeWidth="1" strokeDasharray="4 8" />
+          <circle cx="400" cy="400" r="280" stroke="#2A1610" strokeWidth="2" />
+          <circle cx="400" cy="400" r="120" stroke="#2A1610" strokeWidth="3" />
           <g transform="translate(400, 400)">
             {Array.from({ length: 14 }).map((_, i) => (
-              <polygon key={i} points="0,-15 10,-50 0,-100 -10,-50" fill="#7A1E24" transform={`rotate(${(i * 360) / 14})`} />
+              <polygon key={i} points="0,-15 10,-50 0,-100 -10,-50" fill="#2A1610" transform={`rotate(${(i * 360) / 14})`} />
             ))}
           </g>
         </svg>

@@ -153,7 +153,7 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
 
   return (
     <aside
-      className={`fixed inset-y-0 left-0 z-40 flex flex-col bg-[#7A1E24] text-white shadow-2xl transition-all duration-300 ease-in-out lg:static overflow-hidden ${
+      className={`fixed inset-y-0 left-0 z-40 flex flex-col bg-[#2A1610] text-white shadow-2xl transition-all duration-300 ease-in-out lg:static overflow-hidden ${
         isOpen ? 'w-[260px] translate-x-0' : 'w-0 -translate-x-full lg:translate-x-0'
       }`}
     >

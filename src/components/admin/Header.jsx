@@ -43,7 +43,7 @@ export default function Header({ onMenuClick }) {
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-1.5 transition-colors hover:bg-gray-100 focus:outline-none"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#7A1E24] font-bold text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2A1610] font-bold text-white">
               {admin?.name?.charAt(0) || 'A'}
             </div>
             <div className="hidden text-left md:block">

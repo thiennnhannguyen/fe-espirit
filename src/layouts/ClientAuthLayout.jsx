@@ -7,7 +7,7 @@ export default function ClientAuthLayout() {
       {/* 
         CỘT TRÁI: Hình ảnh / Branding (Chỉ hiện trên Desktop lg trở lên)
       */}
-      <div className="hidden w-1/2 relative lg:flex flex-col items-center justify-center bg-[#7A1E24] overflow-hidden">
+      <div className="hidden w-1/2 relative lg:flex flex-col items-center justify-center bg-[#2A1610] overflow-hidden">
         
         {/* Họa tiết Trống Đồng mờ ở Background */}
         <div 
@@ -54,7 +54,7 @@ export default function ClientAuthLayout() {
         <div className="w-full max-w-md">
           {/* Logo E-SPIRIT (Chỉ hiển thị trên Mobile/Tablet vì Desktop đã có ở cột trái) */}
           <div className="mb-10 flex flex-col items-center justify-center lg:hidden">
-            <div className="mb-3 h-20 w-20 overflow-hidden rounded-full bg-[#7A1E24] shadow-lg">
+            <div className="mb-3 h-20 w-20 overflow-hidden rounded-full bg-[#2A1610] shadow-lg">
               <img
                 src={logoDongson}
                 alt="E-SPIRIT Logo"

@@ -125,7 +125,7 @@ const EventModal = ({ isOpen, onClose, onSave, initialData }) => {
           <button 
             type="submit"
             form="event-form"
-            className="rounded-lg bg-[#7A1E24] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#5A212C] transition-colors focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-1"
+            className="rounded-lg bg-[#2A1610] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#1A0D09] transition-colors focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-1"
           >
             Lưu sự kiện
           </button>
@@ -198,7 +198,7 @@ export default function EventManagement() {
         </div>
         <button 
           onClick={handleOpenAddModal}
-          className="flex items-center justify-center gap-2 rounded-lg bg-[#7A1E24] px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#5A212C] focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-1"
+          className="flex items-center justify-center gap-2 rounded-lg bg-[#2A1610] px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#1A0D09] focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-1"
         >
           <Plus size={18} />
           Thêm bài viết mới
@@ -207,7 +207,7 @@ export default function EventManagement() {
 
       {/* 2. Filter & Search Section */}
       <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
-        <div className="flex items-center gap-2 mb-4 text-[#7A1E24] font-medium text-sm">
+        <div className="flex items-center gap-2 mb-4 text-[#2A1610] font-medium text-sm">
           <Filter size={18} />
           <span>Bộ lọc & Tìm kiếm</span>
         </div>

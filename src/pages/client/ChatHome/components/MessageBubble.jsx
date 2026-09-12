@@ -22,7 +22,7 @@ export default function MessageBubble({ message }) {
           <div
             className={`px-4 py-3 text-[15px] leading-relaxed shadow-sm ${
               isUser
-                ? 'bg-[#7A1E24] text-white rounded-2xl rounded-tr-sm'
+                ? 'bg-[#2A1610] text-white rounded-2xl rounded-tr-sm'
                 : 'bg-white text-gray-800 border border-gray-100 rounded-2xl rounded-tl-sm'
             }`}
           >

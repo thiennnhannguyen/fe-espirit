@@ -97,7 +97,7 @@ export default function SelectionModal({ isOpen, onClose, onConfirm, type, exist
         {/* Footer */}
         <div className="border-t border-gray-100 bg-gray-50 px-6 py-4 flex justify-between items-center">
           <span className="text-sm font-medium text-gray-600">
-            Đã chọn: <span className="text-[#7A1E24]">{selectedIds.length}</span> mục
+            Đã chọn: <span className="text-[#2A1610]">{selectedIds.length}</span> mục
           </span>
           <div className="flex gap-3">
             <button 
@@ -111,7 +111,7 @@ export default function SelectionModal({ isOpen, onClose, onConfirm, type, exist
               disabled={selectedIds.length === 0}
               className={`rounded-lg px-5 py-2 text-sm font-medium shadow-sm transition-colors ${
                 selectedIds.length > 0 
-                  ? 'bg-[#7A1E24] text-white hover:bg-[#5A212C]' 
+                  ? 'bg-[#2A1610] text-white hover:bg-[#1A0D09]' 
                   : 'bg-gray-200 text-gray-400 cursor-not-allowed'
               }`}
             >

@@ -34,7 +34,7 @@ const MessageBubble = ({ message }) => {
         
         {/* Avatar */}
         <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full shadow-sm mt-1
-          ${isUser ? 'bg-white text-[#7A1E24]' : 'bg-[#7A1E24] text-white'}`}
+          ${isUser ? 'bg-white text-[#2A1610]' : 'bg-[#2A1610] text-white'}`}
         >
           {isUser ? <User size={16} /> : <Sparkles size={16} />}
         </div>
@@ -42,7 +42,7 @@ const MessageBubble = ({ message }) => {
         {/* Content */}
         <div className="flex flex-col gap-2 w-full">
           {isUser ? (
-            <div className="rounded-2xl rounded-tr-none bg-[#7A1E24] px-4 py-3 text-[15px] text-white shadow-sm break-words">
+            <div className="rounded-2xl rounded-tr-none bg-[#2A1610] px-4 py-3 text-[15px] text-white shadow-sm break-words">
               {message.text}
             </div>
           ) : (
@@ -68,11 +68,11 @@ const MessageBubble = ({ message }) => {
               {/* Dạng Khung Văn Khấn */}
               {message.ritualText && (
                 <div className="relative mt-4 overflow-hidden rounded-xl border border-[#CAA46A]/40 bg-[#Fdfbf7] p-5 md:p-6 shadow-inner">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#CAA46A] to-[#7A1E24] opacity-50"></div>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#CAA46A] to-[#2A1610] opacity-50"></div>
                   
                   <button 
                     onClick={() => handleCopy(message.ritualText)}
-                    className="absolute right-3 top-3 flex items-center gap-1.5 rounded-lg bg-white/80 px-3 py-1.5 text-xs font-medium text-[#7A1E24] shadow-sm border border-[#CAA46A]/20 transition-colors hover:bg-[#FAF5EC]"
+                    className="absolute right-3 top-3 flex items-center gap-1.5 rounded-lg bg-white/80 px-3 py-1.5 text-xs font-medium text-[#2A1610] shadow-sm border border-[#CAA46A]/20 transition-colors hover:bg-[#FAF5EC]"
                   >
                     <Copy size={14} /> Sao chép
                   </button>
@@ -156,7 +156,7 @@ export default function ChatInterface() {
       {/* 1. Header */}
       <header className="flex h-14 md:h-16 shrink-0 items-center justify-between border-b border-[#CAA46A]/20 bg-white/90 px-4 shadow-sm backdrop-blur-md z-10">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#7A1E24] text-white shadow-sm">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#2A1610] text-white shadow-sm">
             <Sparkles size={18} />
           </div>
           <div>
@@ -197,7 +197,7 @@ export default function ChatInterface() {
                   <button
                     key={idx}
                     onClick={() => handleSend(prompt)}
-                    className="rounded-xl border border-[#CAA46A]/30 bg-white/50 px-4 py-3 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-[#CAA46A] hover:bg-white hover:text-[#7A1E24]"
+                    className="rounded-xl border border-[#CAA46A]/30 bg-white/50 px-4 py-3 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-[#CAA46A] hover:bg-white hover:text-[#2A1610]"
                   >
                     {prompt}
                   </button>
@@ -215,7 +215,7 @@ export default function ChatInterface() {
               {isTyping && (
                 <div className="flex w-full justify-start mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#7A1E24] text-white shadow-sm mt-1">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2A1610] text-white shadow-sm mt-1">
                       <Sparkles size={16} />
                     </div>
                     <div className="rounded-2xl rounded-tl-none bg-white px-5 py-4 shadow-sm border border-gray-100 flex items-center gap-1.5">
@@ -260,7 +260,7 @@ export default function ChatInterface() {
               disabled={!inputValue.trim()}
               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all ${
                 inputValue.trim() 
-                  ? 'bg-[#7A1E24] text-white shadow-md hover:bg-[#5A212C]' 
+                  ? 'bg-[#2A1610] text-white shadow-md hover:bg-[#1A0D09]' 
                   : 'bg-gray-100 text-gray-400'
               }`}
             >

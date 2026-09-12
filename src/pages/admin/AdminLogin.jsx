@@ -105,13 +105,13 @@ export default function AdminLogin() {
                 type="checkbox"
                 checked={form.rememberMe}
                 onChange={(e) => setField('rememberMe', e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-[#7A1E24] focus:ring-[#7A1E24] transition-colors cursor-pointer"
+                className="h-4 w-4 rounded border-gray-300 text-[#2A1610] focus:ring-[#2A1610] transition-colors cursor-pointer"
               />
               <span className="group-hover:text-gray-900 transition-colors">Ghi nhớ đăng nhập</span>
             </label>
             <Link
               to="/admin/forgot-password"
-              className="font-medium text-[#7A1E24] hover:text-[#5A212C] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CAA46A] rounded px-1 -mx-1"
+              className="font-medium text-[#2A1610] hover:text-[#1A0D09] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CAA46A] rounded px-1 -mx-1"
             >
               Quên mật khẩu?
             </Link>
@@ -126,7 +126,7 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={submitting}
-            className="mt-2 w-full rounded-xl bg-[#7A1E24] py-3.5 text-sm font-semibold tracking-wide text-white shadow-md transition-all hover:bg-[#5A212C] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CAA46A] focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:shadow-md"
+            className="mt-2 w-full rounded-xl bg-[#2A1610] py-3.5 text-sm font-semibold tracking-wide text-white shadow-md transition-all hover:bg-[#1A0D09] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CAA46A] focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:shadow-md"
           >
             {submitting ? 'Đang xác thực...' : 'Đăng nhập hệ thống'}
           </button>

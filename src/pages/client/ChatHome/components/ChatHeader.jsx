@@ -24,7 +24,7 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
       <div className="flex items-center gap-2">
         <button
           onClick={onToggleSidebar}
-          className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-gray-700 shadow-sm border border-stone-200/60 transition-colors hover:bg-white hover:text-[#7A1E24] ${
+          className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-gray-700 shadow-sm border border-stone-200/60 transition-colors hover:bg-white hover:text-[#2A1610] ${
             isSidebarOpen ? 'lg:hidden' : ''
           }`}
           title={isSidebarOpen ? 'Đóng menu' : 'Mở menu'}
@@ -69,7 +69,7 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
               onClick={() => setIsDropdownOpen((prev) => !prev)}
               className="flex items-center gap-2 rounded-full bg-white/80 p-1.5 pl-2 pr-3 border border-stone-200/80 shadow-sm transition-all hover:bg-white focus:outline-none"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#7A1E24] text-xs font-bold text-white shadow-xs">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2A1610] text-xs font-bold text-white shadow-xs">
                 {initial}
               </div>
               <span className="hidden text-xs font-semibold text-gray-700 sm:inline-block max-w-[120px] truncate">
@@ -95,7 +95,7 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
           /* Nút Đăng nhập cho Khách vãng lai */
           <button
             onClick={() => navigate('/login')}
-            className="rounded-full bg-[#7A1E24] px-5 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#5A212C]"
+            className="rounded-full bg-[#2A1610] px-5 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#1A0D09]"
           >
             Đăng nhập
           </button>

@@ -99,7 +99,7 @@ const FeaturedArticlesSection = ({ articles, onRemove, onOpenModal }) => {
         </div>
         <button 
           onClick={onOpenModal}
-          className="flex items-center gap-2 rounded-lg bg-[#FAF5EC] px-3 py-1.5 text-sm font-medium text-[#7A1E24] transition-colors hover:bg-[#CAA46A]/20"
+          className="flex items-center gap-2 rounded-lg bg-[#FAF5EC] px-3 py-1.5 text-sm font-medium text-[#2A1610] transition-colors hover:bg-[#CAA46A]/20"
         >
           <Plus size={16} /> Chọn bài viết
         </button>
@@ -144,7 +144,7 @@ const ProductRecommendationsSection = ({ products, holiday, onHolidayChange, onR
           <select 
             value={holiday}
             onChange={(e) => onHolidayChange(e.target.value)}
-            className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-[#7A1E24] focus:border-[#CAA46A] focus:outline-none focus:ring-1 focus:ring-[#CAA46A]"
+            className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-[#2A1610] focus:border-[#CAA46A] focus:outline-none focus:ring-1 focus:ring-[#CAA46A]"
           >
             <option value="Rằm tháng 7">Rằm tháng 7 (Vu Lan)</option>
             <option value="Tết Trung Thu">Tết Trung Thu</option>
@@ -162,7 +162,7 @@ const ProductRecommendationsSection = ({ products, holiday, onHolidayChange, onR
             </div>
             <div className="p-3">
               <h3 className="font-medium text-gray-900 truncate">{product.name}</h3>
-              <p className="mt-1 text-sm font-semibold text-[#7A1E24]">{product.price}</p>
+              <p className="mt-1 text-sm font-semibold text-[#2A1610]">{product.price}</p>
             </div>
             <button 
               onClick={() => onRemove(product.id)}
@@ -176,7 +176,7 @@ const ProductRecommendationsSection = ({ products, holiday, onHolidayChange, onR
         
         <button 
           onClick={onOpenModal}
-          className="flex h-full min-h-[180px] flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/50 text-gray-500 transition-colors hover:border-[#CAA46A] hover:bg-[#FAF5EC]/30 hover:text-[#7A1E24]"
+          className="flex h-full min-h-[180px] flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/50 text-gray-500 transition-colors hover:border-[#CAA46A] hover:bg-[#FAF5EC]/30 hover:text-[#2A1610]"
         >
           <Plus size={24} />
           <span className="text-sm font-medium">Thêm mâm lễ</span>
@@ -381,8 +381,8 @@ export default function HomeContentManagement() {
             disabled={isSaving}
             className={`flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-md transition-all focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-2 ${
               isSaving 
-                ? 'bg-[#5A212C] opacity-80 cursor-wait' 
-                : 'bg-[#7A1E24] hover:bg-[#5A212C] hover:shadow-lg'
+                ? 'bg-[#1A0D09] opacity-80 cursor-wait' 
+                : 'bg-[#2A1610] hover:bg-[#1A0D09] hover:shadow-lg'
             }`}
           >
             {isSaving ? (

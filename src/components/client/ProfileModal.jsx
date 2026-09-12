@@ -213,7 +213,7 @@ export default function ProfileModal({ isOpen, onClose }) {
             <button
               type="submit"
               disabled={isLoading || isDeleting}
-              className="flex items-center gap-2 rounded-xl bg-[#7A1E24] px-6 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:bg-[#5A212C] focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-70"
+              className="flex items-center gap-2 rounded-xl bg-[#2A1610] px-6 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:bg-[#1A0D09] focus:outline-none focus:ring-2 focus:ring-[#CAA46A] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-70"
             >
               {isLoading ? (
                 <Loader2 size={18} className="animate-spin" />
