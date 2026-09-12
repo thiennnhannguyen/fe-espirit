@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { X, Save, Loader2, AlertTriangle } from 'lucide-react';
+import { X, Save, Loader2, AlertTriangle, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 import { authService } from '../../services/authService';
@@ -64,6 +64,28 @@ export default function ProfileModal({ isOpen, onClose }) {
     if (e.target === e.currentTarget) {
       handleClose();
     }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Validate dung lượng (Giới hạn 1MB để tránh chuỗi Base64 quá dài làm lỗi DB)
+    if (file.size > 1024 * 1024) {
+      toast.error('Kích thước ảnh quá lớn. Vui lòng chọn ảnh dưới 1MB!');
+      return;
+    }
+
+    // Chuyển file thành Base64
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      // Lưu chuỗi Base64 vào state formData.avatar_url
+      setFormData({ ...formData, avatar_url: reader.result });
+    };
+    reader.onerror = () => {
+      toast.error('Không thể đọc file. Vui lòng thử lại!');
+    };
   };
 
   const handleSubmit = async (e) => {
@@ -163,28 +185,49 @@ export default function ProfileModal({ isOpen, onClose }) {
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {/* Avatar Section */}
           <div className="flex items-center gap-4 mb-2">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#2A1610] text-xl font-bold text-white shadow-sm overflow-hidden relative">
-              {formData.avatar_url ? (
-                <>
-                  <img 
-                    src={formData.avatar_url} 
-                    alt="Avatar" 
-                    className="h-full w-full object-cover" 
-                    onError={(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'flex'; }}
-                  />
-                  <div style={{ display: 'none' }} className="h-full w-full items-center justify-center bg-[#2A1610] text-white">
+            
+            {/* Cụm Avatar Clickable */}
+            <div className="relative group shrink-0">
+              <input 
+                type="file" 
+                id="avatar-upload" 
+                accept="image/*" 
+                className="hidden" 
+                onChange={handleFileChange}
+              />
+              <label 
+                htmlFor="avatar-upload"
+                className="flex h-16 w-16 items-center justify-center rounded-full bg-[#2A1610] text-xl font-bold text-white shadow-sm overflow-hidden relative cursor-pointer"
+              >
+                {formData.avatar_url ? (
+                  <>
+                    <img 
+                      src={formData.avatar_url} 
+                      alt="Avatar" 
+                      className="h-full w-full object-cover" 
+                      onError={(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'flex'; }}
+                    />
+                    <div style={{ display: 'none' }} className="h-full w-full items-center justify-center bg-[#2A1610] text-white">
+                      {formData.username ? formData.username.charAt(0).toUpperCase() : 'U'}
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-[#2A1610] text-white">
                     {formData.username ? formData.username.charAt(0).toUpperCase() : 'U'}
                   </div>
-                </>
-              ) : (
-                <div className="flex h-full w-full items-center justify-center bg-[#2A1610] text-white">
-                  {formData.username ? formData.username.charAt(0).toUpperCase() : 'U'}
+                )}
+
+                {/* Overlay Hover */}
+                <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Camera size={18} className="text-white mb-0.5" />
+                  <span className="text-[10px] text-white font-medium">Đổi ảnh</span>
                 </div>
-              )}
+              </label>
             </div>
+
             <div className="flex-1">
               <label className="mb-1.5 block text-sm font-medium text-stone-700">
-                Đường dẫn ảnh đại diện (URL)
+                Hoặc nhập đường dẫn ảnh (URL)
               </label>
               <input
                 type="text"
