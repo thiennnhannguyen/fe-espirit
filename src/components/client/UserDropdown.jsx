@@ -64,6 +64,7 @@ export default function UserDropdown({ isOpen, onClose, onOpenFeedback, onOpenPr
 
       {/* Menu Items */}
       <div className="py-1">
+        {/* (Hidden)
         <button
           onClick={() => {
             console.log('Sync Calendar clicked');
@@ -74,6 +75,7 @@ export default function UserDropdown({ isOpen, onClose, onOpenFeedback, onOpenPr
           <Calendar size={18} className="text-gray-500" />
           <span>Đồng bộ Calendar</span>
         </button>
+        */}
 
         <button
           onClick={() => {
