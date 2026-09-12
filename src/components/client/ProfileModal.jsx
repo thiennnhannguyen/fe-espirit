@@ -91,25 +91,29 @@ export default function ProfileModal({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    const isDirty = 
+      formData.username !== initialData.username ||
+      formData.email !== initialData.email ||
+      formData.avatar_url !== initialData.avatar_url ||
+      (formData.password && formData.password.trim() !== '');
+
+    if (!isDirty) {
+      toast.error('Không có thông tin nào được thay đổi.');
+      return;
+    }
+
     // BẢO MẬT: Tuyệt đối chỉ nhặt các trường cho phép, Không bao giờ gửi Role
-    const updatePayload = {};
-    if (formData.username && formData.username !== initialData.username) {
-      updatePayload.username = formData.username;
-    }
-    if (formData.email && formData.email !== initialData.email) {
-      updatePayload.email = formData.email;
-    }
+    // Vì là PUT request, ta luôn gửi kèm username và email hiện hành
+    const updatePayload = {
+      username: formData.username,
+      email: formData.email
+    };
+
     if (formData.avatar_url !== initialData.avatar_url) {
       updatePayload.avatar_url = formData.avatar_url;
     }
     if (formData.password && formData.password.trim() !== '') {
       updatePayload.password = formData.password;
-    }
-
-    // Nếu không có gì thay đổi
-    if (Object.keys(updatePayload).length === 0) {
-      toast.error('Không có thông tin nào được thay đổi.');
-      return;
     }
 
     if (!user?.id) {
