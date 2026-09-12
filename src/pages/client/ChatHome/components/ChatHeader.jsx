@@ -92,13 +92,28 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
             />
           </>
         ) : (
-          /* Nút Đăng nhập cho Khách vãng lai */
-          <button
-            onClick={() => navigate('/login')}
-            className="rounded-full bg-[#2A1610] px-5 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#1A0D09]"
-          >
-            Đăng nhập
-          </button>
+          /* Khối nút Đăng nhập / Đăng ký mới */
+          <div className="flex items-center gap-3">
+            {/* Nút Đăng nhập */}
+            <button 
+              onClick={() => navigate('/login')}
+              className="px-5 py-2 text-sm font-medium text-gray-700 bg-transparent rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all duration-300"
+            >
+              Đăng nhập
+            </button>
+            
+            {/* Nút Đăng ký */}
+            <button 
+              onClick={() => navigate('/register')}
+              className="px-5 py-2 text-sm font-medium text-white bg-[#2A1610] rounded-full shadow-md hover:bg-[#1A0D09] hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2"
+            >
+              Đăng ký
+              {/* Icon mũi tên hiện đại */}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
         )}
       </div>
 
