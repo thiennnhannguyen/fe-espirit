@@ -50,18 +50,22 @@ export default function ClientAuthLayout() {
       {/* 
         CỘT PHẢI: Form nhập liệu (Chứa Outlet)
       */}
-      <div className="flex w-full lg:w-1/2 flex-col items-center justify-center p-6 sm:p-12">
-        <div className="w-full max-w-md">
+      <div className="flex w-full lg:w-1/2 flex-col items-center justify-center p-6 sm:p-12 relative overflow-hidden">
+        {/* Nền Gradient mờ (Blobs) tăng chiều sâu */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-[#CAA46A]/20 to-transparent rounded-full blur-[80px] pointer-events-none animate-pulse opacity-60"></div>
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-[#2A1610]/10 to-transparent rounded-full blur-[80px] pointer-events-none opacity-60"></div>
+
+        <div className="w-full max-w-[420px] relative z-10">
           {/* Logo E-SPIRIT (Chỉ hiển thị trên Mobile/Tablet vì Desktop đã có ở cột trái) */}
-          <div className="mb-10 flex flex-col items-center justify-center lg:hidden">
-            <div className="mb-3 h-20 w-20 overflow-hidden rounded-full bg-[#2A1610] shadow-lg">
+          <div className="mb-10 flex flex-col items-center justify-center lg:hidden animate-in zoom-in duration-500">
+            <div className="mb-4 h-24 w-24 overflow-hidden rounded-full shadow-[0_0_40px_rgba(42,22,16,0.15)] ring-4 ring-white/50">
               <img
                 src={logoDongson}
                 alt="E-SPIRIT Logo"
-                className="h-full w-full object-cover mix-blend-screen scale-[1.18]"
+                className="h-full w-full object-cover scale-[1.05]"
               />
             </div>
-            <h1 className="font-serif text-3xl font-bold text-[#2A1610]">
+            <h1 className="font-serif text-3xl font-bold tracking-tight text-[#2A1610]">
               E-SPIRIT
             </h1>
           </div>
