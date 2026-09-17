@@ -79,63 +79,78 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-700 bg-white/60 backdrop-blur-2xl p-8 sm:p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white">
+    <div className="w-full max-w-[440px] mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500 p-6 sm:p-10">
       <div className="mb-10 text-center">
-        <h2 className="font-serif text-[28px] leading-tight font-bold text-[#2A1610]">Đăng nhập</h2>
+        <h2 className="font-serif text-[32px] leading-tight font-bold text-[#2B1D12]">Đăng nhập</h2>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Username Input */}
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-stone-700">Tên đăng nhập</label>
-          <div className="relative group">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 transition-colors group-focus-within:text-[#CAA46A]">
-              <User size={18} className="text-stone-400 transition-colors group-focus-within:text-[#CAA46A]" />
-            </div>
-            <input
-              type="text"
-              value={formData.username}
-              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-              className="w-full rounded-2xl border border-stone-200 bg-white/80 py-3.5 pl-11 pr-4 text-sm text-stone-800 transition-all focus:border-[#CAA46A] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[#CAA46A]/10 hover:border-stone-300"
-              placeholder="Nhập tên đăng nhập của bạn"
-            />
+        <div className="relative group mb-6">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 z-10 transition-colors group-focus-within:text-[#C9A15A]">
+            <User size={18} className="text-[#8A7A68] transition-colors group-focus-within:text-[#C9A15A]" />
           </div>
+          <input
+            type="text"
+            id="username"
+            value={formData.username}
+            onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+            className="peer w-full rounded-[14px] border border-[#E5DCC8] bg-transparent py-3.5 pl-11 pr-4 text-[15px] font-semibold text-[#8A7A68] focus:text-[#C9A15A] transition-all focus:border-[#C9A15A] focus:bg-transparent focus:outline-none focus:ring-[4px] focus:ring-[#C9A15A]/25 placeholder-transparent"
+            placeholder="Tên đăng nhập"
+          />
+          <label 
+            htmlFor="username"
+            className="absolute -translate-y-1/2 bg-transparent text-[#8A7A68] transition-all duration-200 pointer-events-none
+            peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-10 peer-placeholder-shown:text-[15px] 
+            peer-focus:top-0 peer-focus:left-4 peer-focus:text-[12px] peer-focus:font-semibold peer-focus:text-[#C9A15A] peer-focus:bg-[#FAF5EC] peer-focus:px-1
+            top-0 left-4 text-[12px] font-semibold text-[#8A7A68] bg-[#FAF5EC] px-1"
+          >
+            Tên đăng nhập
+          </label>
         </div>
 
         {/* Password Input */}
-        <div>
-          <div className="mb-2 flex items-center justify-between">
-            <label className="block text-sm font-semibold text-stone-700">Mật khẩu</label>
-            <Link to="/forgot-password" className="text-xs font-semibold text-[#CAA46A] transition-colors hover:text-[#2A1610]">
-              Quên mật khẩu?
-            </Link>
+        <div className="relative group mb-2">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 z-10 transition-colors group-focus-within:text-[#C9A15A]">
+            <Lock size={18} className="text-[#8A7A68] transition-colors group-focus-within:text-[#C9A15A]" />
           </div>
-          <div className="relative group">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-              <Lock size={18} className="text-stone-400 transition-colors group-focus-within:text-[#CAA46A]" />
-            </div>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              className="w-full rounded-2xl border border-stone-200 bg-white/80 py-3.5 pl-11 pr-11 text-sm text-stone-800 transition-all focus:border-[#CAA46A] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[#CAA46A]/10 hover:border-stone-300"
-              placeholder="••••••••"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-4 text-stone-400 hover:text-stone-700 focus:outline-none transition-colors"
-            >
-              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
-          </div>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            id="password"
+            value={formData.password}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            className="peer w-full rounded-[14px] border border-[#E5DCC8] bg-transparent py-3.5 pl-11 pr-11 text-[15px] font-semibold text-[#8A7A68] focus:text-[#C9A15A] transition-all focus:border-[#C9A15A] focus:bg-transparent focus:outline-none focus:ring-[4px] focus:ring-[#C9A15A]/25 placeholder-transparent"
+            placeholder="Mật khẩu"
+          />
+          <label 
+            htmlFor="password"
+            className="absolute -translate-y-1/2 bg-transparent text-[#8A7A68] transition-all duration-200 pointer-events-none
+            peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-10 peer-placeholder-shown:text-[15px] 
+            peer-focus:top-0 peer-focus:left-4 peer-focus:text-[12px] peer-focus:font-semibold peer-focus:text-[#C9A15A] peer-focus:bg-[#FAF5EC] peer-focus:px-1
+            top-0 left-4 text-[12px] font-semibold text-[#8A7A68] bg-[#FAF5EC] px-1"
+          >
+            Mật khẩu
+          </label>
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#8A7A68] hover:text-[#2B1D12] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A15A] rounded-r-[14px] transition-colors"
+          >
+            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+          </button>
+        </div>
+
+        <div className="flex items-center justify-end mb-4">
+          <Link to="/forgot-password" className="text-[13px] font-semibold text-[#C9A15A] transition-colors hover:text-[#2B1D12] focus-visible:ring-2 focus-visible:ring-[#C9A15A] rounded">
+            Quên mật khẩu?
+          </Link>
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
           disabled={isLoading}
-          className="mt-6 flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-[#2A1610] to-[#3a221a] py-3.5 text-sm font-bold text-white shadow-lg shadow-[#2A1610]/20 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-[#2A1610]/20 disabled:translate-y-0 disabled:opacity-70 disabled:shadow-none disabled:cursor-not-allowed"
+          className="mt-6 flex w-full items-center justify-center rounded-[14px] bg-gradient-to-br from-[#3D2817] to-[#6B3F23] py-4 text-[17px] font-bold text-white transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_8px_20px_rgba(201,161,90,0.3)] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#E8C77A] active:scale-98 disabled:scale-100 disabled:opacity-70 disabled:shadow-none disabled:cursor-not-allowed"
         >
           {isLoading ? <Loader2 size={18} className="animate-spin mr-2" /> : null}
           {isLoading ? 'Đang xác thực...' : 'Đăng nhập'}
@@ -144,25 +159,25 @@ export default function Login() {
         {/* Google Login */}
         <div className="relative my-7">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-stone-200"></div>
+            <div className="w-full border-t border-[#E5DCC8]"></div>
           </div>
-          <div className="relative flex justify-center text-xs uppercase tracking-wider font-semibold">
-            <span className="bg-[#FAF5EC] px-4 text-stone-400">Hoặc tiếp tục với</span>
+          <div className="relative flex justify-center text-[12px] uppercase tracking-widest font-semibold">
+            <span className="bg-[#FAF5EC] px-4 text-[#8A7A68]">Hoặc tiếp tục với</span>
           </div>
         </div>
 
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-2xl border border-stone-200 bg-white/80 py-3 text-sm font-semibold text-stone-700 shadow-sm transition-all hover:bg-white hover:text-stone-900 hover:border-stone-300 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-stone-100"
+          className="flex w-full items-center justify-center gap-3 rounded-[14px] border border-[#E5DCC8] bg-white py-3.5 text-[15px] font-semibold text-[#2B1D12] shadow-sm transition-all hover:bg-stone-50 hover:border-[#C9A15A]/40 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#C9A15A]/20"
         >
           <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="h-5 w-5" />
           Đăng nhập bằng Google
         </button>
       </form>
 
-      <div className="mt-8 text-center text-sm font-medium text-stone-500">
+      <div className="mt-8 text-center text-[14.5px] text-[#8A7A68]">
         Chưa có tài khoản?{' '}
-        <Link to="/register" className="font-bold text-[#CAA46A] transition-colors hover:text-[#2A1610]">
+        <Link to="/register" className="font-bold text-[#C9A15A] transition-colors hover:text-[#2B1D12] focus-visible:ring-2 focus-visible:ring-[#C9A15A] rounded">
           Đăng ký ngay
         </Link>
       </div>
