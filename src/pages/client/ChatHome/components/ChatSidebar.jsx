@@ -259,8 +259,12 @@ export default function ChatSidebar({ isOpen, onClose, onNewChat }) {
         {/* Bottom Section: Thông tin User tóm tắt */}
         <div className="border-t border-white/10 p-3">
           <div className="flex items-center gap-3 rounded-xl bg-white/5 p-2 transition-colors hover:bg-white/10 cursor-pointer">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-500 text-stone-900 font-bold text-xs shadow-sm">
-              {initial}
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-500 text-stone-900 font-bold text-xs shadow-sm overflow-hidden">
+              {user?.avatar_url ? (
+                <img src={user.avatar_url} alt="Avatar" className="h-full w-full object-cover" />
+              ) : (
+                initial
+              )}
             </div>
             <div className="flex flex-col min-w-0 flex-1">
               <span className="truncate text-xs font-semibold text-white">

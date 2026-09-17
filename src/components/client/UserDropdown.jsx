@@ -49,8 +49,12 @@ export default function UserDropdown({ isOpen, onClose, onOpenFeedback, onOpenPr
     >
       {/* Top Section: Thông tin User tóm tắt */}
       <div className="flex items-center gap-3 border-b border-gray-100 px-3 py-2.5 pb-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2A1610] text-white font-semibold text-sm shadow-sm">
-          {initial}
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2A1610] text-white font-semibold text-sm shadow-sm overflow-hidden">
+          {user?.avatar_url ? (
+            <img src={user.avatar_url} alt="Avatar" className="h-full w-full object-cover" />
+          ) : (
+            initial
+          )}
         </div>
         <div className="flex flex-col min-w-0">
           <span className="truncate text-sm font-semibold text-gray-900">
