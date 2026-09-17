@@ -69,8 +69,12 @@ export default function ChatHeader({ isSidebarOpen, onToggleSidebar, onOpenFeedb
               onClick={() => setIsDropdownOpen((prev) => !prev)}
               className="flex items-center gap-2 rounded-full bg-white/80 p-1.5 pl-2 pr-3 border border-stone-200/80 shadow-sm transition-all hover:bg-white focus:outline-none"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2A1610] text-xs font-bold text-white shadow-xs">
-                {initial}
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2A1610] text-xs font-bold text-white shadow-xs overflow-hidden">
+                {user?.avatar_url ? (
+                  <img src={user.avatar_url} alt="Avatar" className="h-full w-full object-cover" />
+                ) : (
+                  initial
+                )}
               </div>
               <span className="hidden text-xs font-semibold text-gray-700 sm:inline-block max-w-[120px] truncate">
                 {user?.username || 'Người dùng'}
