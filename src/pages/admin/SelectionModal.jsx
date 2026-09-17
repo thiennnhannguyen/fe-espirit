@@ -20,7 +20,7 @@ export default function SelectionModal({ isOpen, onClose, onConfirm, type, exist
     }
   }, [isOpen, type, existingItems]);
 
-  if (!isOpen) return null;
+  if (!isOpen) return null; 
 
   const toggleSelect = (id) => {
     if (selectedIds.includes(id)) {
