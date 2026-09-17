@@ -11,7 +11,7 @@ import ClientChatLayout from '../layouts/ClientChatLayout'
 import Home from '../pages/user/Home'
 import Login from '../pages/client/Login'
 import Register from '../pages/client/Register'
-import ForgotPassword from '../pages/user/ForgotPassword'
+import ForgotPassword from '../pages/client/ForgotPassword'
 import Profile from '../pages/user/Profile'
 import RitualSearch from '../pages/user/RitualSearch'
 import RitualDetail from '../pages/user/RitualDetail'
@@ -46,6 +46,7 @@ export default function AppRoutes() {
       <Route element={<ClientAuthLayout />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Route>
 
       {/* Giao diện chính Chatbot Tâm Linh */}
@@ -54,8 +55,6 @@ export default function AppRoutes() {
       </Route>
 
       <Route element={<UserLayout />}>
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-
         <Route path="/rituals" element={<RitualSearch />} />
         <Route path="/rituals/:id" element={<RitualDetail />} />
         <Route path="/guidebook" element={<Guidebook />} />

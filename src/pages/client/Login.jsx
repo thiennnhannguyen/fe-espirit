@@ -140,8 +140,8 @@ export default function Login() {
           </button>
         </div>
 
-        <div className="flex items-center justify-end mb-4">
-          <Link to="/forgot-password" className="text-[13px] font-semibold text-[#C9A15A] transition-colors hover:text-[#2B1D12] focus-visible:ring-2 focus-visible:ring-[#C9A15A] rounded">
+        <div className="flex w-full items-center justify-end px-2">
+          <Link to="/forgot-password" className="text-[13px] font-semibold text-[#8A7A68] transition-colors hover:text-[#C9A15A] hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A15A] rounded-[4px] px-1">
             Quên mật khẩu?
           </Link>
         </div>
