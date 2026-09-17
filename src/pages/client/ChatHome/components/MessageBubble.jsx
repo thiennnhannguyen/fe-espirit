@@ -1,6 +1,7 @@
 import RitualCard from './RitualCard';
 import ChecklistCard from './ChecklistCard';
 import LocationCard from './LocationCard';
+import logo from '../../../../assets/logo-dongson.jpg';
 
 export default function MessageBubble({ message }) {
   const isUser = message.sender === 'user';
@@ -9,8 +10,8 @@ export default function MessageBubble({ message }) {
     <div className={`flex w-full ${isUser ? 'justify-end' : 'justify-start'} mb-6`}>
       {/* Bot Avatar */}
       {!isUser && (
-        <div className="mr-3 mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white border border-amber-200/50 shadow-sm text-amber-500">
-          <span className="font-serif text-lg leading-none">✨</span>
+        <div className="mr-3 mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white border border-amber-200/50 shadow-sm text-amber-500 overflow-hidden">
+          <img src={logo} alt="Bot" className="h-full w-full object-cover" />
         </div>
       )}
 

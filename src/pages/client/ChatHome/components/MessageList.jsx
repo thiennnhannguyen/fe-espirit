@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import MessageBubble from './MessageBubble';
+import logo from '../../../../assets/logo-dongson.jpg';
 
 export default function MessageList({ messages, isSending }) {
   const messagesEndRef = useRef(null);
@@ -21,8 +22,8 @@ export default function MessageList({ messages, isSending }) {
       {/* Typing Indicator */}
       {isSending && (
         <div className="flex w-full justify-start mb-6">
-          <div className="mr-3 mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white border border-amber-200/50 shadow-sm text-amber-500">
-            <span className="font-serif text-lg leading-none">✨</span>
+          <div className="mr-3 mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white border border-amber-200/50 shadow-sm text-amber-500 overflow-hidden">
+            <img src={logo} alt="Bot" className="h-full w-full object-cover" />
           </div>
           <div className="flex items-center rounded-2xl rounded-tl-sm border border-gray-100 bg-white px-4 py-3 shadow-sm">
             <div className="flex gap-1.5">
